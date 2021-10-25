@@ -1,0 +1,17 @@
+{
+  "name": "malina-app",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node node_modules/malinajs/malina-esbuild",
+    "dev": "node node_modules/malinajs/malina-esbuild -w",
+    "start": "npx derver --production public",
+    "surge": "cd public && npx surge"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "derver": "^0.4.19",
+    "esbuild": "^0.12.28",
+    "malinajs": "^0.6.43",
+    "malinajs-router": "^0.1.5"
+  }
+}

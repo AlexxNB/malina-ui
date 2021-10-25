@@ -1,0 +1,39 @@
+{
+  "name": "malina-ui",
+  "version": "0.0.1",
+  "description": "UI kit for malina.js framework",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "node docs/esbuild --dev",
+    "docs:build":"node docs/esbuild",
+    "docs:start": "npx derver docs/public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexxNB/malina-ui.git"
+  },
+  "keywords": [
+    "malina",
+    "malina.js",
+    "framework",
+    "ui",
+    "ui",
+    "kit",
+    "ui",
+    "lib",
+    "ui",
+    "library"
+  ],
+  "author": "Alexey Schebelev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexxNB/malina-ui/issues"
+  },
+  "homepage": "https://github.com/AlexxNB/malina-ui#readme",
+  "devDependencies": {
+    "derver": "^0.4.19",
+    "esbuild": "^0.13.9",
+    "malinajs": "^0.6.46",
+    "malinajs-router": "^0.1.5"
+  }
+}
