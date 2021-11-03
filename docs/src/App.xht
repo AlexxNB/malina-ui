@@ -1,7 +1,37 @@
 <script>
+    import Sidebar from './Sidebar.xht';
+    import content from './content';
     import {MalinaUI,Button} from 'malina-ui';
 </script>
 
 <MalinaUI/>
 
-<Button>Hello</Button>
+<div class="wrapper">
+    <div class="sidebar">
+        <Sidebar/>
+    </div>
+    <div class="content">
+        {#each Object.keys(content) as pageid}
+            {* const page = content[pageid]}
+            <h2 id={pageid}>{page.title}</h2>
+            <component:{page.component} />
+        {/each}
+    </div>
+</div>
+
+<style>
+    .wrapper{
+        display:flex;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .sidebar{
+        width:200px;
+        min-height: 100%;
+        border-right: 1px solid #EEEEEE;
+    }
+    .content{
+        width: 650px;
+        padding: 0px 20px;
+    }
+</style>
