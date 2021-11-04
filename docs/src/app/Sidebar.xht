@@ -1,0 +1,10 @@
+<script>
+    import content from '@/content';
+</script>
+
+<ul>
+  {#each Object.keys(content) as pageid}
+    {* const page = content[pageid]}
+    <li><a href="#{pageid}">{page.title}</a></li>
+  {/each}
+</ul>

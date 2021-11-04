@@ -3,6 +3,10 @@
     "compilerOptions": {
         "paths": {
             "malina-ui": ["./components/index.js"],
+            "@/*": ["./docs/src/*"],
+            "@pages/*": ["./docs/src/app/pages/*"],
+            "@app/*": ["./docs/src/app/*"],
+            "@lib/*": ["./docs/src/lib/*"]
         }
     }
 }

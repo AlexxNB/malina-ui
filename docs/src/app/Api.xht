@@ -1,0 +1,93 @@
+<script>
+    export let api = {};
+
+    function isRequired(prop){
+        return prop[2]===undefined ? '*' : '';
+    }
+
+    function defaultValue(prop){
+        if(prop[2] === undefined) return '';
+        return typeof prop[2] == 'string' ? `"${prop[2]}"` : String(prop[2])
+    }
+</script>
+
+{#if api.props}
+    <h3>Properties</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Default value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {#each api.props as prop}
+            <tr>
+                <td class="prop">{prop[0]} <span>{isRequired(prop)}</span></td>
+                <td>{prop[1]}</td>
+                <td>{defaultValue(prop)}</td>
+            </tr>
+            {/each}
+        </tbody>
+    </table>
+    <p class="note">* requred properties</p>
+{/if}
+
+{#if api.anchors}
+    <h3>Anchors</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Namespace</th>
+                <th>Area</th>
+            </tr>
+        </thead>
+        <tbody>
+            {#each api.anchors as anchor}
+            <tr>
+                <td class="prop">{anchor[0]}</td>
+                <td>{anchor[1]}</td>
+            </tr>
+            {/each}
+        </tbody>
+    </table>
+{/if}
+
+{#if api.slots}
+    <h3>Slots</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Namespace</th>
+                <th>Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {#each api.slots as slot}
+            <tr>
+                <td class="prop">{slot[0]}</td>
+                <td>{slot[1]}</td>
+            </tr>
+            {/each}
+        </tbody>
+    </table>
+{/if}
+
+<style>
+    .prop{
+        font-weight: bold;
+        font-style: italic;
+    }
+    .prop span{
+        color: var(--color-error);
+    }
+
+    .note{
+        font-style: italic;
+        font-size: .8em;
+    }
+</style>

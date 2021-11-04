@@ -1,0 +1,60 @@
+<script>
+    import {MalinaUI} from 'malina-ui';
+    import Sidebar from '@app/Sidebar.xht';
+    import Api from '@app/Api.xht';
+    import content from '@/content';
+    import route from '@lib/route';
+
+    let showApi = false;
+
+    $: page = content[route.$];
+    $: page, ()=>showApi=false;
+</script>
+
+<MalinaUI/>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <Sidebar/>
+    </div>
+    <div class="content">
+        {#if page}
+            {#if page.api}
+                <div class="tabs">
+                    <button class:active={!showApi} @click={showApi=false}>Showcase</button>
+                    <button class:active={showApi} @click={showApi=true}>API</button>
+                </div>
+            {/if}
+            <h2>{page.title}</h2>
+            {#if showApi}
+                <Api api={page.api}/>
+            {:else}
+                <component:{page.component} />
+            {/if}
+        {/if}
+    </div>
+</div>
+
+<style>
+    .wrapper{
+        display:flex;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .sidebar{
+        width:200px;
+        min-height: 100%;
+        border-right: 1px solid #EEEEEE;
+    }
+    .content{
+        width: 650px;
+        padding: 0px 20px;
+    }
+    .tabs{
+        float: right;
+    }
+
+    .active{
+        font-weight: bold;
+    }
+</style>

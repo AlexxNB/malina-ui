@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "docs:dev": "node docs/esbuild --dev",
-    "docs:build":"node docs/esbuild",
+    "docs:build": "node docs/esbuild",
     "docs:start": "npx derver docs/public"
   },
   "repository": {
@@ -34,6 +34,8 @@
     "derver": "^0.4.19",
     "esbuild": "^0.13.9",
     "malinajs": "^0.6.46",
-    "malinajs-router": "^0.1.5"
+    "malinajs-router": "^0.1.5",
+    "prismjs": "^1.25.0",
+    "storxy": "^0.1.6"
   }
 }

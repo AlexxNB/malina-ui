@@ -1,0 +1,30 @@
+<script>
+    import {highlight} from '@lib/highlight';
+    export let code = "";
+</script>
+
+<div class="example box-shadow mb">
+    <div class="showcase">
+        <slot/>
+    </div>
+    <pre><code>{@html highlight(code.replace(/^\s*\n|\n\s*$/g,''))}</code></pre>
+</div>
+
+<style>
+    .example{
+        background-color: #FFFFFF;
+        border-radius:var(--radius);
+    }
+
+    .showcase{
+        padding: 25px;
+        border-bottom: 1px solid var(--color-lightest);
+    }
+    pre{ 
+        margin: 0;
+        padding: 15px;
+    }
+    code,pre{
+       background-color: #F6FAFD;
+    }
+</style>
