@@ -51,7 +51,8 @@
 
 <Example code={`
 <script>
-  import { mdiClose } from '@mdi/js'; 
+  import {Icon} from 'malina-ui'; 
+  import {mdiClose} from '@mdi/js'; 
   const triangleIcon = "${triangleIcon}";
 </script>
 
@@ -129,9 +130,9 @@
 </p>
 
 <Example code={`
-<Icon src={malinaIcon} size="3" rotate="-35"/>
-<Icon src={malinaIcon} size="3"/>       
-<Icon src={malinaIcon} size="3" rotate="35"/>
+<Icon src="${malinaIcon}" size="3" rotate="-35"/>
+<Icon src="${malinaIcon}" size="3"/>       
+<Icon src="${malinaIcon}" size="3" rotate="35"/>
 `}>
     <Icon src={malinaIcon} size="3" rotate="-35"/>       
     <Icon src={malinaIcon} size="3"/>       
@@ -145,13 +146,15 @@
 </p>
 
 <Example code={`
-<Icon src={malinaIcon} color="#FC0" size="3" rotate="-35"/>
-<Icon src={malinaIcon} color="#FC0" size="3"/>       
-<Icon src={malinaIcon} color="#FC0" size="3" rotate="35"/>
+<Icon src="${malinaIcon}" size="2" spin="-5"/>
+<Icon src="${malinaIcon}" size="2" spin="-1"/>
+<Icon src="${malinaIcon}" size="2" spin="0.5"/>
+<Icon src="${malinaIcon}" size="2" spin/>
+<Icon src="${malinaIcon}" size="2" spin="7"/>
 `}>
-    <Icon src={malinaIcon} size="2" spin="-5"/>                   
-    <Icon src={malinaIcon} size="2" spin="-1"/>                   
-    <Icon src={malinaIcon} size="2" spin="0.5"/>                   
-    <Icon src={malinaIcon} size="2" spin/>                   
-    <Icon src={malinaIcon} size="2" spin="7"/>                
+    <Icon src={malinaIcon} size="2" spin="-5"/>
+    <Icon src={malinaIcon} size="2" spin="-1"/>
+    <Icon src={malinaIcon} size="2" spin="0.5"/>
+    <Icon src={malinaIcon} size="2" spin/>
+    <Icon src={malinaIcon} size="2" spin="7"/>
 </Example>
