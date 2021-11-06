@@ -4,14 +4,14 @@ export default {
     icon:{
 
         props: [
-            ['src',"Icon SVG-path string, sprite's symbol or filename"],
-            ['color',"Color (for path and sprite only)",'currentColor'],
-            ['size',"Icon size. Digit or css-units",1],
-            ['rotate',"Icon rotation in degrees",false],
-            ['flipH',"Flip icon horizontally",false],
-            ['flipV',"Flip icon vertically",false],
-            ['spin',"Animate icon spinning. Time in seconds for full turn.",false],
-            ['viewbox',"viewBox attribute for svg element",'0 0 24 24'],
+            ['src',"Icon SVG-path string, sprite's symbol or filename",'string'],
+            ['color',"Color (for path and sprite only)",'string','currentColor'],
+            ['size',"Icon size. Digit or css-units",'number|string',1],
+            ['rotate',"Icon rotation in degrees",'number',false],
+            ['flipH',"Flip icon horizontally",'boolean',false],
+            ['flipV',"Flip icon vertically",'boolean', false],
+            ['spin',"Animate icon spinning. Time in seconds for full turn.",'boolean|number',false],
+            ['viewbox',"viewBox attribute for svg element",'string','0 0 24 24'],
         ],
 
         anchors:[

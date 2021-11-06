@@ -1,15 +1,122 @@
 <script>
+    import Icon from './Icon.xht';
+    import {spinner} from './../icons';
+    import {getClasses} from './../lib/button';
+
+    // Button color
+    export let primary = false;
+    export let secondary = false;
+    export let error = false;
+    export let warning = false;
+    export let success = false;
+    
+
+    //Button view
     export let outline = false;
     export let clear = false;
 
-    export let big = false;
+    //Button states
+    export let loading = false;
+
+    // Button size
     export let small = false;
+
+    //Icons
+    export let icon = false;
+    export let iconRight = false;
+    export let iconOnly = false;
+
+    // Util
+    $: typeClasses = getClasses(outline,clear,[primary,secondary,error,warning,success]);
 </script>
 
-<button><slot/></button>
+<button
+  class={`radius ${typeClasses}`}
+  class:small
+  class:loading
+  class:iconOnly
+  {...$attributes}
+  @@ 
+  ^
+>
+
+{#fragment:content}
+  {#if icon || iconRight}
+    {#if icon}<span class={iconOnly ? "ico" : "ico-l"}><Icon src={icon}/></span>{/if}
+    {#if !iconOnly}
+      <span><slot/></span>
+      {#if iconRight}<span class="ico-r"><Icon src={iconRight}/></span>{/if}
+    {/if}
+  {:else}
+    <slot/>
+  {/if}
+{/fragment}
+
+{#if loading}
+  <span class="txt-transparent"><fragment:content><slot/></fragment></span>
+  <span class="spinner"><Icon src={loading == true ? spinner : loading} spin="0.75" size="1.6em"/></span>
+{:else}
+  <fragment:content><slot/></fragment>
+{/if}
+</button>
 
 <style>
-  button {
-      background-color: var(--color-primary);
+  button{
+    display: inline-flex;
+    white-space: nowrap;
+    padding: 0 3rem;
+    height: 3.8rem;
+    cursor:pointer;
+    transition: opacity .25s;
+    font-weight: bold;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button:hover{
+    opacity: .7;
+  }
+
+
+  .small{
+    padding: 0 1rem;
+    height: 2.6rem;
+    font-size: .8em;
+  }
+
+  button:disabled{
+    opacity: .4;
+    cursor: not-allowed;
+  }
+
+  .loading {
+    pointer-events: none;
+    position: relative;
+  }
+
+  .loading .spinner {
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    margin-left: -.8em;
+    margin-top: -.8em;
+  }
+
+  .ico-r{
+    margin-left: .5em;
+  }
+  .ico-l{
+    margin-right: .5em;
+  }
+  .iconOnly{
+    padding: 0;
+    width: 3.8rem;
+  }
+  .small.iconOnly{
+    padding: 0;
+    width: 2.6rem;
   }
 </style>

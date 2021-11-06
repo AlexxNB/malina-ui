@@ -1,5 +1,5 @@
 <script>
-    import {resolveSource,getStyles, getSpin} from './helpers.js';
+    import {resolveSource,getStyles, getSpin} from './../lib/icon';
 
     export let src;
     export let color;
@@ -38,7 +38,7 @@
         <svg viewBox={viewbox} {...$attributes} style={styles} @@ ^>
         {#if spin !== false}
             <g class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style}>
-                <path d={path}></path>
+                <path d={src}></path>
             </g>
         {:else}
             <path d={src}></path>
@@ -72,9 +72,11 @@
 
     .spinCW{
 		animation: spin linear 2s infinite;
+        transform-origin: center;
 	}
 
 	.spinCCW{
 		animation: spin-inverse linear 2s infinite;
+        transform-origin: center;
 	}
 </style>

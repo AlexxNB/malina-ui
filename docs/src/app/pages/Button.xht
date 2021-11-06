@@ -1,0 +1,189 @@
+<script>
+    import {Button} from 'malina-ui';
+    import Example from '@app/Example.xht';
+
+    const gearIcon = `M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z`;
+
+    const rightIcon = `M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z`;
+    const downIcon = `M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z`;
+    const accountIcon = `M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z`;
+    const menuIcon = `M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z`;
+    const deleteIcon = `M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8.46,11.88L9.87,10.47L12,12.59L14.12,10.47L15.53,11.88L13.41,14L15.53,16.12L14.12,17.53L12,15.41L9.88,17.53L8.47,16.12L10.59,14L8.46,11.88M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z`;
+</script>
+
+<p>
+    Button component
+</p>
+
+<h4>Variants</h4>
+
+<p>
+    You can use one of predefined variats <code>primary</code>, <code>secondary</code>, <code>error</code>, <code>warning</code>, <code>success</code> or default.
+</p>
+
+
+<Example code={`
+<Button>Default</Button>    
+<Button primary>Primary</Button>    
+<Button secondary>Secondary</Button>    
+<Button error>Error</Button>    
+<Button warning>Warning</Button>    
+<Button success>Success</Button> 
+`}>
+<div>
+    <Button>Default</Button>    
+    <Button primary>Primary</Button>    
+    <Button secondary>Secondary</Button>    
+    <Button error>Error</Button>    
+    <Button warning>Warning</Button>    
+    <Button success>Success</Button>   
+</div> 
+</Example>
+
+<style>
+    div{
+        line-height: 4.5rem;
+    }
+</style>
+
+<p>
+    The <code>outline</code> property make button with transparent background.
+</p>
+
+<Example code={`
+<Button outline>Default</Button>    
+<Button outline primary>Primary</Button>    
+<Button outline secondary>Secondary</Button>    
+<Button outline error>Error</Button>    
+<Button outline warning>Warning</Button>    
+<Button outline success>Success</Button>  
+`}>
+<div>
+    <Button outline>Default</Button>    
+    <Button outline primary>Primary</Button>    
+    <Button outline secondary>Secondary</Button>    
+    <Button outline error>Error</Button>    
+    <Button outline warning>Warning</Button>    
+    <Button outline success>Success</Button>   
+</div> 
+</Example>
+
+<p>
+    And the <code>clear</code> will also remove a border.
+</p>
+
+<Example code={`
+<Button clear>Default</Button>    
+<Button clear primary>Primary</Button>    
+<Button clear secondary>Secondary</Button>    
+<Button clear error>Error</Button>    
+<Button clear warning>Warning</Button>    
+<Button clear success>Success</Button> 
+`}>
+<div>
+    <Button clear>Default</Button>    
+    <Button clear primary>Primary</Button>    
+    <Button clear secondary>Secondary</Button>    
+    <Button clear error>Error</Button>    
+    <Button clear warning>Warning</Button>    
+    <Button clear success>Success</Button>   
+</div> 
+</Example>
+
+<h4>Size</h4>
+
+<p>
+    With <code>small</code> property you will make a smaller buttons
+</p>
+
+<Example code={`
+<Button small>Default</Button>      
+<Button primary small>Primary</Button>      
+<Button secondary small>Secondary</Button>      
+<Button error small>Error</Button>      
+<Button warning small>Warning</Button>      
+<Button success small>Success</Button>      
+<Button outline small>Outline default</Button>  
+<Button outline primary small>Outline primary</Button>  
+<Button clear error small>Clear error</Button>  
+<Button clear success small>Clear success</Button>  
+`}>
+<div>
+    <Button small>Default</Button>      
+    <Button primary small>Primary</Button>      
+    <Button secondary small>Secondary</Button>      
+    <Button error small>Error</Button>      
+    <Button warning small>Warning</Button>      
+    <Button success small>Success</Button>      
+    <Button outline small>Outline default</Button>  
+    <Button outline primary small>Outline primary</Button>  
+    <Button clear error small>Clear error</Button>  
+    <Button clear success small>Clear success</Button>      
+</div> 
+</Example>
+
+<h4>States</h4>
+
+<p>
+    You can make disabled and temporary unavialable buttons this way. If you set value of property <code>loading</code> with valid Icon source - this icon will be spinned instead default spinner.
+</p>
+
+<Example code={`
+<script>
+    import {mdiGear} from "@mdi/js";
+</script>
+
+<Button primary disabled>Disabled</Button>          
+<Button secondary loading>Loading</Button>  
+<Button small error disabled>Disabled</Button>          
+<Button small success loading>Loading</Button>  
+    
+<Button outline primary disabled="disabled">Disabled</Button>          
+<Button outline secondary loading={mdiGear}>Loading</Button>          
+<Button small outline error disabled>Disabled</Button>          
+<Button small outline success loading>Loading</Button>          
+       
+<Button clear primary disabled>Disabled</Button>          
+<Button clear secondary loading>Loading</Button>          
+<Button small clear error disabled>Disabled</Button>          
+<Button small clear success loading>Loading</Button> 
+`}>
+<div>       
+    <Button primary disabled>Disabled</Button>          
+    <Button secondary loading>Loading</Button>  
+    <Button small error disabled>Disabled</Button>          
+    <Button small success loading>Loading</Button>  
+    <br/>        
+    <Button outline primary disabled="disabled">Disabled</Button>          
+    <Button outline secondary loading={gearIcon}>Loading</Button>          
+    <Button small outline error disabled>Disabled</Button>          
+    <Button small outline success loading>Loading</Button>          
+    <br/>        
+    <Button clear primary disabled>Disabled</Button>          
+    <Button clear secondary loading>Loading</Button>          
+    <Button small clear error disabled>Disabled</Button>          
+    <Button small clear success loading>Loading</Button>          
+</div> 
+</Example>
+
+<h4>Icons</h4>
+
+<p>
+    You can add icons at the left and at the right side of button.
+</p>
+
+<Example code={`
+<Button primary icon={gearIcon}>Settings</Button>
+<Button secondary small iconRight={rightIcon}>Next</Button>
+<Button primary clear icon={accountIcon} iconRight={downIcon}>Account</Button>
+<Button outline icon={menuIcon}/>
+<Button small error clear icon={deleteIcon} iconOnly/>
+`}>
+<div>       
+    <Button primary icon={gearIcon}>Settings</Button>          
+    <Button secondary small iconRight={rightIcon}>Next</Button>          
+    <Button primary clear icon={accountIcon} iconRight={downIcon}>Account</Button>          
+    <Button outline icon={menuIcon} iconOnly/>          
+    <Button small error clear icon={deleteIcon} iconOnly/>          
+</div> 
+</Example>

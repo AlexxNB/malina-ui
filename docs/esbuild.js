@@ -12,7 +12,8 @@ if(DEV){
     }).then( bundle =>{
         derver({
             dir: 'docs/public',
-            watch: ['docs/public','docs/src','components'],
+            watch: ['docs/public','docs/src','components','lib','icons'],
+            preserveScroll: 70,
             onwatch: async (lr,item)=>{
                 if(item != 'docs/public'){
                     lr.prevent();

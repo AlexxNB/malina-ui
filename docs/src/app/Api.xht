@@ -2,12 +2,12 @@
     export let api = {};
 
     function isRequired(prop){
-        return prop[2]===undefined ? '*' : '';
+        return prop[3]===undefined ? '*' : '';
     }
 
     function defaultValue(prop){
-        if(prop[2] === undefined) return '';
-        return typeof prop[2] == 'string' ? `"${prop[2]}"` : String(prop[2])
+        if(prop[3] === undefined) return '';
+        return typeof prop[3] == 'string' ? `"${prop[3]}"` : String(prop[3])
     }
 </script>
 
@@ -19,6 +19,7 @@
             <tr>
                 <th>Property</th>
                 <th>Description</th>
+                <th>Type</th>
                 <th>Default value</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
             <tr>
                 <td class="prop">{prop[0]} <span>{isRequired(prop)}</span></td>
                 <td>{prop[1]}</td>
+                <td>{@html prop[2].replace(/\|/g,'<br/>')}</td>
                 <td>{defaultValue(prop)}</td>
             </tr>
             {/each}
