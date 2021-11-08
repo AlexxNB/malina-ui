@@ -4,9 +4,11 @@
 </script>
 
 <div class="example box-shadow mb">
+    {#if !!$option.slots?.default}
     <div class="showcase">
         <slot/>
     </div>
+    {/if}
     <pre><code>{@html highlight(code.replace(/^\s*\n|\n\s*$/g,''))}</code></pre>
 </div>
 

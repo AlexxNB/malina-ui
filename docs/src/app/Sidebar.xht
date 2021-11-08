@@ -1,10 +1,28 @@
 <script>
     import content from '@/content';
+    import route from '@lib/route';
 </script>
 
+<h4><a href="#main">Mallina-UI</a></h4>
 <ul>
   {#each Object.keys(content) as pageid}
     {* const page = content[pageid]}
-    <li><a href="#{pageid}">{page.title}</a></li>
+    <li><a href="#{pageid}" class:active={route.$ == pageid}>{page.title}</a></li>
   {/each}
 </ul>
+
+<style>
+  li{
+    list-style: none;
+  }
+  a{
+    text-decoration: none;
+  }
+  a.active{
+    font-weight: bold;
+  }
+
+  h4 a{
+    color: var(--color-text);
+  }
+</style>
