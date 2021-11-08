@@ -5,7 +5,6 @@ import Typography from '@pages/Typography.xht';
 import Button from '@pages/Button.md';
 import Input from '@pages/Input.md';
 import Icon from '@pages/Icon.md';
-import Test from '@pages/Test.md';
 
 export default {
 
@@ -35,11 +34,6 @@ export default {
         title: 'Icon',
         component: Icon,
         api: api.icon
-    },
-
-    test:{
-        title: 'Test',
-        component: Test
     },
 
 }
