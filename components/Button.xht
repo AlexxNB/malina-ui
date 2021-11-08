@@ -2,6 +2,7 @@
     import Icon from './Icon.xht';
     import {spinner} from './../icons';
     import {getClasses} from './../lib/button';
+    import {choose} from './../lib/utils';
 
     // Button color
     export let primary = false;
@@ -9,6 +10,7 @@
     export let error = false;
     export let warning = false;
     export let success = false;
+    export let dark = false;
     
 
     //Button view
@@ -27,7 +29,12 @@
     export let iconOnly = false;
 
     // Util
-    $: typeClasses = getClasses(outline,clear,[primary,secondary,error,warning,success]);
+    $: btnStyle = choose(
+        ['primary','secondary','error','warning','success','dark'],
+        [ primary,  secondary,  error,  warning,  success, dark],
+      'light');
+
+    $: typeClasses = getClasses(outline,clear,btnStyle);
 </script>
 
 <button
@@ -42,10 +49,10 @@
 
 {#fragment:content}
   {#if icon || iconRight}
-    {#if icon}<span class={iconOnly ? "ico" : "ico-l"}><Icon src={icon}/></span>{/if}
+    {#if icon}<span class={iconOnly ? "ico" : "ico-l"} ^iconLeft><Icon src={icon}/></span>{/if}
     {#if !iconOnly}
       <span><slot/></span>
-      {#if iconRight}<span class="ico-r"><Icon src={iconRight}/></span>{/if}
+      {#if iconRight}<span class="ico-r" ^iconRight><Icon src={iconRight}/></span>{/if}
     {/if}
   {:else}
     <slot/>
@@ -54,7 +61,7 @@
 
 {#if loading}
   <span class="txt-transparent"><fragment:content><slot/></fragment></span>
-  <span class="spinner"><Icon src={loading == true ? spinner : loading} spin="0.75" size="1.6em"/></span>
+  <span class="spinner" ^iconLoading><Icon src={loading == true ? spinner : loading} spin="0.75" size="1.6em"/></span>
 {:else}
   <fragment:content><slot/></fragment>
 {/if}

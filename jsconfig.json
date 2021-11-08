@@ -6,7 +6,8 @@
             "@/*": ["./docs/src/*"],
             "@pages/*": ["./docs/src/app/pages/*"],
             "@app/*": ["./docs/src/app/*"],
-            "@lib/*": ["./docs/src/lib/*"]
+            "@lib/*": ["./docs/src/lib/*"],
+            "@icons": ["./docs/src/icons.js"]
         }
     }
 }

@@ -1,0 +1,188 @@
+<script>
+    import Icon from './Icon.xht';
+    import {spinner} from './../icons';
+    import {choose} from '../lib/utils';
+    import {handleValue} from '../lib/input';
+    export let type = null;
+
+    // Predefined types
+    export let password = false;
+    export let textarea = false;
+    export let number = false;
+    export let select = false;
+    export let multiple = false;
+
+    // Value
+    export let value = '';
+
+    // Size
+    export let small = false;
+
+    // State
+    export let error = false;
+    export let success = false;
+    export let warning = false;
+    export let loading = false;
+
+    // Icons
+    export let icon = false;
+    export let iconRight = false;
+
+
+    // Util
+    $: inpType = type || choose(
+        ['password','textarea','number','select','multiple'],
+        [ password,  textarea,  number, select, multiple],
+      'text');
+
+    $: value,() => value=handleValue(value,inpType);
+
+    $: stateClasses = choose(
+        ['bd-error txt-error','bd-success txt-success','bd-warning txt-warning'],
+        [ error,  success,  warning],
+      'bd-light txt-neutral');
+</script>
+
+{#fragment:input}
+    {#if inpType == 'textarea'}
+        <textarea 
+            class="radius {stateClasses}" 
+            class:loading
+            class:iconLP={icon}
+            class:iconRP={loading || iconRight}
+            :value={value}
+            {...$attributes}
+            ^ @@
+        />
+    {:else}
+        {#if inpType == 'select' || inpType == 'multiple'}
+            <select 
+                class="radius {stateClasses}"
+                multiple={inpType == 'multiple' || undefined}
+                class:small={small && !multiple}
+                class:multiple={!!multiple}
+                class:loading
+                class:iconLP={icon}
+                class:iconRP={loading || iconRight}
+                :value={value}
+                {...$attributes}
+                ^ @@
+            ><slot/></select>
+        {:else}
+            <input 
+                class="radius {stateClasses}"
+                class:small
+                class:loading
+                class:iconLP={icon}
+                class:iconRP={loading || iconRight}
+                type={inpType}
+                :value={value}
+                {...$attributes}
+                ^ @@
+            />
+        {/if}
+    {/if}
+{/fragment}
+
+{#if !icon && !iconRight && !loading}
+    <fragment:input/>
+{:else}
+    <div class="input-has-icon" ^iconWrapper>
+
+        <div class="icon-left" ^iconLeft>
+        {#if icon}
+            <Icon src={icon}/>
+        {/if}
+        </div>
+
+        <fragment:input/>
+
+        <div class="icon-right" ^iconRight>
+        {#if loading}
+            <Icon src={loading == true ? spinner : loading} spin="0.75"/>
+        {/if}
+        {#if !loading && iconRight}
+            <Icon src={iconRight}/>
+        {/if}
+        </div>
+    </div>
+{/if}
+
+<style>
+
+    input,textarea,select{
+        padding: .5rem .7rem;
+        height: 3.8rem;
+        width: 100%;
+        outline: 0;
+        transition: .25s;
+        background-color: var(--color-bg);
+    }
+
+    textarea, .multiple{
+        height: 8rem;
+    }
+
+    input:focus, textarea:focus,select:focus{
+        border-color: var(--color-primary);
+        box-shadow: 0 0 2px var(--color-primary);
+    }
+
+    input::placeholder, textarea::placeholder, select::placeholder{
+        color: var(--color-light);
+    }
+
+    .small{
+        padding: 0 1rem;
+        height: 2.6rem;
+        font-size: .8em;
+    }
+
+    input:disabled,select:disabled,textarea:disabled{
+        opacity: .4;
+        cursor: not-allowed;
+    }
+
+    .bd-error:focus{
+       border-color: var(--color-error);
+       box-shadow: 0 0 2px var(--color-error);
+    }
+
+    .bd-success:focus{
+       border-color: var(--color-success);
+       box-shadow: 0 0 2px var(--color-success);
+    }
+
+    .bd-warning:focus{
+       border-color: var(--color-warning);
+       box-shadow: 0 0 2px var(--color-warning);
+    }
+
+    .loading {
+        pointer-events: none;
+        opacity: .6;
+    }
+
+    .input-has-icon{
+        position: relative;
+    }
+
+    .icon-right{
+        display:inline-flex;
+        align-items: center;
+        position: absolute;
+        right: .3em;
+        height: 100%;
+    }
+
+    .icon-left{
+        display:inline-flex;
+        align-items: center;
+        position: absolute;
+        left: .3em;
+        height: 100%;
+    }
+
+    .iconLP{padding-left: 2.3em;}
+    .iconRP{padding-right: 2.3em;}
+</style>
