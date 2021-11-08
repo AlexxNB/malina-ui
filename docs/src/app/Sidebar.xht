@@ -4,6 +4,7 @@
 </script>
 
 <h4><a href="#main">Mallina-UI</a></h4>
+
 <ul>
   {#each Object.keys(content) as pageid}
     {* const page = content[pageid]}
@@ -11,7 +12,15 @@
   {/each}
 </ul>
 
+<p>
+  <a href="https://github.com/AlexxNB/malina-ui" target="_blank">Github</a>
+</p>
+
 <style>
+  ul,li{
+    margin: 0;
+    padding: 0;
+  }
   li{
     list-style: none;
   }
