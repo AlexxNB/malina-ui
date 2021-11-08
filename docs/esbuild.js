@@ -1,9 +1,12 @@
 const { build } = require('esbuild');
 const { derver } = require('derver');
+const {malinaPlugin} = require('./scripts/malina');
+const {malinaMarkdown} = require('./scripts/markdown');
+const {resolveExamples} = require('./scripts/example');
 
-const {malinaPlugin} = require('malinajs/malina-esbuild');
 
 const DEV = process.argv.includes('--dev');
+
 
 if(DEV){
     esbuild({
@@ -39,8 +42,10 @@ async function esbuild(options={}){
         minify: true,
         bundle: true,
         plugins: [
+            resolveExamples(),
             malinaPlugin({
-                css: false
+                css: false,
+                plugins: [malinaMarkdown()]
             })
         ],
         ...options

@@ -1,10 +1,11 @@
 import api from './api';
 
-import Main from '@pages/Main.xht';
+import Main from '@pages/Main.md';
 import Typography from '@pages/Typography.xht';
-import Button from '@pages/Button.xht';
-import Input from '@pages/Input.xht';
-import Icon from '@pages/Icon.xht';
+import Button from '@pages/Button.md';
+import Input from '@pages/Input.md';
+import Icon from '@pages/Icon.md';
+import Test from '@pages/Test.md';
 
 export default {
 
@@ -34,6 +35,11 @@ export default {
         title: 'Icon',
         component: Icon,
         api: api.icon
+    },
+
+    test:{
+        title: 'Test',
+        component: Test
     },
 
 }
