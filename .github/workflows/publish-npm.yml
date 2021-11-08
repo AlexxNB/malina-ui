@@ -1,4 +1,4 @@
-name: Build Documentation
+name: Publish on NPM
 
 on:
   push:
