@@ -12,6 +12,20 @@
 	background: var(--hl-background);
 	color: var(--hl-text);
 }
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]){
+		--hl-background: #3d3d3d;
+		--hl-text: #f6fafd;
+	}
+}
+
+:root[data-theme="dark"]{
+	--hl-background: #3d3d3d;
+	--hl-text: #f6fafd;
+}
+
+
 .token.comment,
 .token.prolog,
 .token.doctype,
@@ -52,7 +66,6 @@
 .language-css .token.string,
 .style .token.string {
 	color: #9a6e3a;
-	background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,
