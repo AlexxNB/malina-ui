@@ -22,24 +22,30 @@
 
 </script>
 
-<h4><a href="#main">Mallina-UI</a></h4>
 
-<ul>
-  {#each Object.keys(content) as pageid}
-    {* const page = content[pageid]}
-    <li><a href="#{pageid}" class:active={route.$ == pageid}>{page.title}</a></li>
-  {/each}
-</ul>
+<div class="menu">
+  <h4><a href="#main">Mallina-UI</a></h4>
 
-<p>
-  <a href="https://github.com/AlexxNB/malina-ui" target="_blank">Github</a>
-</p>
+  <ul>
+    {#each Object.keys(content) as pageid}
+      {* const page = content[pageid]}
+      <li><a href="#{pageid}" class:active={route.$ == pageid}>{page.title}</a></li>
+    {/each}
+  </ul>
 
-<p>
-  <Button icon={icons[theme.$]} clear @click:toggleTheme>{theme.$}</Button>
-</p>
+  <p>
+    <a href="https://github.com/AlexxNB/malina-ui" target="_blank">Github</a>
+  </p>
+
+  <p>
+    <Button icon={icons[theme.$]} clear @click:toggleTheme>{theme.$}</Button>
+  </p>
+</div>
 
 <style>
+  .menu{
+    position: fixed;
+  }
   ul,li{
     margin: 0;
     padding: 0;

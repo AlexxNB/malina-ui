@@ -3,7 +3,6 @@ langDefinitionMalina(Prism);
          
 module.exports = function highlight(code,lang){
     if(!lang || lang=='htm' || lang=='html') lang = 'malina';
-    console.log(lang)
     return Prism.highlight(code, Prism.languages[lang]);
 }
 
