@@ -5,12 +5,18 @@ import Typography from '@pages/Typography.xht';
 import Button from '@pages/Button.md';
 import Input from '@pages/Input.md';
 import Icon from '@pages/Icon.md';
+import Theming from '@pages/Theming.md';
 
 export default {
 
     main:{
         title: 'Getting started',
         component: Main
+    },
+
+    theming:{
+        title: 'Theming',
+        component: Theming
     },
 
     typography:{
