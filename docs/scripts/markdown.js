@@ -4,7 +4,7 @@ const highlight = require('./highlight');
 
 marked.setOptions({
     highlight: function(code, lang, callback) {
-      return `{@html \`${highlight(code)}\`}`;
+      return `{@html \`${highlight(code,lang)}\`}`;
     }
 });
 
