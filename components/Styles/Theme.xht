@@ -1,7 +1,3 @@
-<script>
-    console.log(window.matchMedia('(prefers-color-scheme: dark)'));
-</script>
-
 <style global>
     :root{
         /* Light mode */
@@ -44,8 +40,7 @@
         --font-mono: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
     }
 
-    @media (prefers-color-scheme: dark) {
-        :root{
+    :root[data-theme="dark"]{
         --color-text: var(--dm-color-text);
         --color-bg: var(--dm-color-bg);
         --color-primary: var(--dm-color-primary);
@@ -56,7 +51,23 @@
         --color-error: var(--dm-color-error);
         --color-success: var(--dm-color-success);
         --color-warning: var(--dm-color-warning);
-        --color-box-shadow: var(--dm-);
+        --color-box-shadow: var(--dm-color-box-shadow);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]){
+        --color-text: var(--dm-color-text);
+        --color-bg: var(--dm-color-bg);
+        --color-primary: var(--dm-color-primary);
+        --color-secondary: var(--dm-color-secondary);
+        --color-neutral: var(--dm-color-neutral);
+        --color-hard: var(--dm-color-hard);
+        --color-soft: var(--dm-color-soft);
+        --color-error: var(--dm-color-error);
+        --color-success: var(--dm-color-success);
+        --color-warning: var(--dm-color-warning);
+        --color-box-shadow: var(--dm-color-box-shadow);
         }
     }
+
 </style>

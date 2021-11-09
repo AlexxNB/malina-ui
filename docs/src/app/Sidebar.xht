@@ -1,6 +1,25 @@
 <script>
+    import {theme, Button} from 'malina-ui';
     import content from '@/content';
     import route from '@lib/route';
+    import {sunIcon,moonIcon,sunMoonIcon} from '@icons';
+
+    const states = {
+      auto: 'light',
+      light: 'dark',
+      dark: 'auto',
+    }
+
+    const icons = {
+      auto: sunMoonIcon,
+      light: sunIcon,
+      dark: moonIcon,
+    }
+
+    function toggleTheme(){
+      theme[states[theme.$]]();
+    }
+
 </script>
 
 <h4><a href="#main">Mallina-UI</a></h4>
@@ -14,6 +33,10 @@
 
 <p>
   <a href="https://github.com/AlexxNB/malina-ui" target="_blank">Github</a>
+</p>
+
+<p>
+  <Button icon={icons[theme.$]} clear @click:toggleTheme>{theme.$}</Button>
 </p>
 
 <style>

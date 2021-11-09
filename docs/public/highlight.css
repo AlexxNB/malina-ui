@@ -14,11 +14,17 @@
 }
 
 @media (prefers-color-scheme: dark) {
-	:root{
+	:root:not([data-theme="light"]){
 		--hl-background: #3d3d3d;
 		--hl-text: #f6fafd;
 	}
 }
+
+:root[data-theme="dark"]{
+	--hl-background: #3d3d3d;
+	--hl-text: #f6fafd;
+}
+
 
 .token.comment,
 .token.prolog,
