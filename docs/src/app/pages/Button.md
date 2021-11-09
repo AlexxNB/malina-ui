@@ -22,7 +22,7 @@ You can use one of predefined variats <code>primary</code>, <code>secondary</cod
     <Button error>Error</Button>    
     <Button warning>Warning</Button>    
     <Button success>Success</Button>   
-    <Button dark>Dark</Button>   
+    <Button hard>Hard</Button>   
 </div> 
 ```code
 <Button>Default</Button>    
@@ -31,7 +31,7 @@ You can use one of predefined variats <code>primary</code>, <code>secondary</cod
 <Button error>Error</Button>    
 <Button warning>Warning</Button>    
 <Button success>Success</Button>   
-<Button dark>Dark</Button> 
+<Button hard>Hard</Button> 
 ```
 The `outline` property make button with transparent background.
 
@@ -47,7 +47,7 @@ The `outline` property make button with transparent background.
     <Button outline error>Error</Button>    
     <Button outline warning>Warning</Button>    
     <Button outline success>Success</Button>   
-    <Button outline dark>Dark</Button> 
+    <Button outline hard>Hard</Button> 
 </div> 
 ```code
 <Button outline>Default</Button>    
@@ -56,7 +56,7 @@ The `outline` property make button with transparent background.
 <Button outline error>Error</Button>    
 <Button outline warning>Warning</Button>    
 <Button outline success>Success</Button>   
-<Button outline dark>Dark</Button>   
+<Button outline hard>Hard</Button>   
 ```
 
 And the `clear` will also remove a border.

@@ -1,10 +1,12 @@
 <style global>
     html{
         font-size: 62.5%;
+        background-color: var(--color-bg);
     }
 
     body{
         color: var(--color-text);
+        background-color: var(--color-bg);
         font-family: var(--font);
         font-size: 1.6rem;
         font-weight: 300;
@@ -55,39 +57,38 @@
 
     blockquote{
         border-left: 4px solid var(--color-primary);
-        background-color: var(--color-light);
+        background-color: var(--color-soft);
         padding: 2rem;
         border-radius: 0 var(--radius) var(--radius) 0;
     }
     code{
         display: inline-block;
-        background-color: var(--color-light);
+        background-color: var(--color-soft);
+        line-height: 1;
         font-family: var(--font-mono);
-        padding: 0 .2em;
-        border: 1px solid var(--color-neutral);
+        padding: .1em .5em;
         border-radius: var(--radius);
-        letter-spacing: -.01em;
     }
 
     pre{
-        background-color: var(--color-light);
+        background-color: var(--color-soft);
         border-radius: var(--radius);
         padding: .5em 1em;
     }
 
     pre code{
-        border: none;
         padding: 0;
+        line-height: 1.6;
     }
 
     table {
         box-sizing: border-box;
-        border-color: var(--color-light);
+        border-color: var(--color-soft);
         text-align: left;
     }
 
     td,th{
-        border-bottom: .1rem solid var(--color-light);
+        border-bottom: .1rem solid var(--color-soft);
         padding: 1.2rem 1.5rem;
     }
 
@@ -101,6 +102,6 @@
         transition: color .25s;
     }
     a:hover{
-        color: var(--color-dark);
+        color: var(--color-hard);
     }
 </style>

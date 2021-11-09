@@ -10,7 +10,7 @@
     export let error = false;
     export let warning = false;
     export let success = false;
-    export let dark = false;
+    export let hard = false;
     
 
     //Button view
@@ -30,8 +30,8 @@
 
     // Util
     $: btnStyle = choose(
-        ['primary','secondary','error','warning','success','dark'],
-        [ primary,  secondary,  error,  warning,  success, dark],
+        ['primary','secondary','error','warning','success','hard'],
+        [ primary,  secondary,  error,  warning,  success, hard],
       'neutral');
 
     $: typeClasses = getClasses(outline,clear,btnStyle);

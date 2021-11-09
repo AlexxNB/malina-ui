@@ -1,22 +1,62 @@
+<script>
+    console.log(window.matchMedia('(prefers-color-scheme: dark)'));
+</script>
+
 <style global>
-    html{
+    :root{
+        /* Light mode */
+        --color-text: var(--color-hard);
+        --color-bg: #FFFFFF;
+
         --color-primary: #5EB5F7;
         --color-secondary: #F7A05E;
 
-        --color-neutral: #ADADAD;
-        --color-dark: #3D3D3D;
-        --color-light: #EDEDED;
+        --color-neutral: #BDBDBD;
+        --color-hard: #454545;
+        --color-soft: #F8F8F8;
 
         --color-error: #FF0000;
         --color-success: #008000;
         --color-warning: #FFB833;
 
-        --color-bg: #FFFFFF;
-        --color-text: var(--color-dark);
+        --color-box-shadow: rgba(0,0,0,.15);
+
+
+        /* Dark mode */
+        --dm-color-bg: #2D2D2D;
+        --dm-color-text: var(--dm-color-hard);
+        --dm-color-primary: #5EB5F7;
+        --dm-color-secondary: #F7A05E;
+
+        --dm-color-neutral: #8D8D8D;
+        --dm-color-hard: #EDEDED;
+        --dm-color-soft: #3D3D3D;
+
+        --dm-color-error: #FF0000;
+        --dm-color-success: #008000;
+        --dm-color-warning: #FFB833;
+
+        --dm-color-box-shadow: rgba(0,0,0,.85);
+
 
         --radius: .4rem;
-
         --font: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
         --font-mono: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root{
+        --color-text: var(--dm-color-text);
+        --color-bg: var(--dm-color-bg);
+        --color-primary: var(--dm-color-primary);
+        --color-secondary: var(--dm-color-secondary);
+        --color-neutral: var(--dm-color-neutral);
+        --color-hard: var(--dm-color-hard);
+        --color-soft: var(--dm-color-soft);
+        --color-error: var(--dm-color-error);
+        --color-success: var(--dm-color-success);
+        --color-warning: var(--dm-color-warning);
+        --color-box-shadow: var(--dm-);
+        }
     }
 </style>
