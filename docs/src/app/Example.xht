@@ -4,7 +4,7 @@
 
 <div class="example box-shadow mb">
     <div class="showcase"><slot/></div>
-    <pre>{@html code}</pre>
+    <pre><code>{@html code}</code></pre>
 </div>
 
 <style>
@@ -18,12 +18,14 @@
         padding: 25px;
         border-bottom: 1px solid var(--color-lightest);
     }
+
     pre{ 
         margin: 0;
         padding: 15px;
         overflow-x: auto;
     }
+
     code,pre{
-       background-color: #F6FAFD;
+       background-color: var(----hl-background);
     }
 </style>

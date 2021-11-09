@@ -12,6 +12,7 @@
 	background: var(--hl-background);
 	color: var(--hl-text);
 }
+
 .token.comment,
 .token.prolog,
 .token.doctype,
