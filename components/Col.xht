@@ -1,0 +1,86 @@
+<script>
+    import {screen} from './../lib/screen.js';
+    import {getColClass} from './../lib/grid.js';
+
+    export let size = false;
+    export let xl = false;
+    export let l = false;
+    export let m = false;
+    export let s = false;
+
+    $: cl = getColClass(screen.$,size,xl,l,m,s) || '';
+</script>
+<div 
+    class={cl}
+^><slot/></div>
+
+<style>
+    div{
+        flex: 1;
+        margin: 0 calc(var(--gutter) / 2) calc(var(--gutter) / 2);
+    }
+
+    .c0 {
+        display: none;
+    }
+
+    .c1 {
+        flex: 0 0 calc((100% / (12/1)) - var(--gutter));
+        max-width: calc((100% / (12/1)) - var(--gutter));
+    }
+
+    .c2 {
+        flex: 0 0 calc((100% / (12/2)) - var(--gutter));
+        max-width: calc((100% / (12/2)) - var(--gutter));
+    }
+
+    .c3 {
+        flex: 0 0 calc((100% / (12/3)) - var(--gutter));
+        max-width: calc((100% / (12/3)) - var(--gutter));
+    }
+
+    .c4 {
+        flex: 0 0 calc((100% / (12/4)) - var(--gutter));
+        max-width: calc((100% / (12/4)) - var(--gutter));
+    }
+
+    .c5 {
+        flex: 0 0 calc((100% / (12/5)) - var(--gutter));
+        max-width: calc((100% / (12/5)) - var(--gutter));
+    }
+
+    .c6 {
+        flex: 0 0 calc((100% / (12/6)) - var(--gutter));
+        max-width: calc((100% / (12/6)) - var(--gutter));
+    }
+
+    .c7 {
+        flex: 0 0 calc((100% / (12/7)) - var(--gutter));
+        max-width: calc((100% / (12/7)) - var(--gutter));
+    }
+
+    .c8 {
+        flex: 0 0 calc((100% / (12/8)) - var(--gutter));
+        max-width: calc((100% / (12/8)) - var(--gutter));
+    }
+
+    .c9 {
+        flex: 0 0 calc((100% / (12/9)) - var(--gutter));
+        max-width: calc((100% / (12/9)) - var(--gutter));
+    }
+
+    .c10 {
+        flex: 0 0 calc((100% / (12/10)) - var(--gutter));
+        max-width: calc((100% / (12/10)) - var(--gutter));
+    }
+
+    .c11 {
+        flex: 0 0 calc((100% / (12/11)) - var(--gutter));
+        max-width: calc((100% / (12/11)) - var(--gutter));
+    }
+
+    .c12 {
+        flex: 0 0 calc((100% / (12/12)) - var(--gutter));
+        max-width: calc((100% / (12/12)) - var(--gutter));
+    }
+</style>

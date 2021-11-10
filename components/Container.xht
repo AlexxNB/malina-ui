@@ -1,0 +1,39 @@
+<script>
+    export let s = false;
+    export let m = false;
+    export let l = false;
+    export let xl = false;
+    export let half = false;
+    export let third = false;
+    export let quarter  = false;
+</script>
+
+<div 
+    class:s
+    class:m
+    class:l
+    class:xl
+    class:half
+    class:third
+    class:quarter
+    {...$attributes} ^
+><slot/></div>
+
+<style>
+    div{
+        margin: 0 auto;
+        max-width: 96%;
+    }
+.l{width: 80rem}
+    .xl{width: 100rem}
+    @media screen and (max-width: 599px) {
+        div{max-width: 100%}
+    }
+
+    
+    .s{width: 40rem}
+    .m{width: 50rem}
+    .half{width: 50%}
+    .third{width: 33%}
+    .quarter{width: 25%}
+</style>

@@ -56,7 +56,7 @@ The easyest way to redefine these variables is to set them in `<style global>` b
 </style>
 ```
 
-> Be sure you are set values for light and dark themes separately. Don't use light variables as values for dark мфкшфидуы(like `--dm-color-error: var(--color-error)).
+> Be sure you are set values for light and dark themes separately. Don't use light variables as values for dark variables(like `--dm-color-error: var(--color-error)).
 
 #### Light and dark theme
 

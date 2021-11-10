@@ -77,4 +77,21 @@ export default {
 
     },
 
+
+    //Container.xht
+    container:{
+        props: [
+            ['xs',"Make container with width 20rem/200px",'boolean',false],
+            ['s',"Make container with width 40rem/400px",'boolean',false],
+            ['m',"Make container with width 60rem/600px",'boolean',false],
+            ['l',"Make container with width 80rem/800px",'boolean',false],
+            ['xl',"Make container with width 100rem/1000px",'boolean',false],
+        ],
+
+        anchors:[
+            ['^','<div> element']
+        ]
+
+    },
+
 }

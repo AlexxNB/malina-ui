@@ -1,5 +1,5 @@
 <script>
-    import {MalinaUI} from 'malina-ui';
+    import {MalinaUI,Container,Row,Col} from 'malina-ui';
     import Sidebar from '@app/Sidebar.xht';
     import Api from '@app/Api.xht';
     import content from '@/content';
@@ -7,49 +7,50 @@
 
     let showApi = false;
 
-    $: page = content[route.$];
+    function findPage(items,id){
+        for(let pageid in items){
+            const pg = items[pageid];
+            if(pageid == id && pg.component) return pg;
+            if(pg.sub){
+                const subpg = findPage(pg.sub,id);
+                if(subpg) return subpg;
+            }
+        }
+        return null;
+    }
+
+    $: page = findPage(content,route.$);
     $: page, ()=>showApi=false;
 </script>
 
 <MalinaUI/>
 
-<div class="wrapper">
-    <div class="sidebar">
-        <Sidebar/>
-    </div>
-    <div class="content">
-        {#if page}
-            {#if page.api}
-                <div class="tabs">
-                    <button class:active={!showApi} @click={showApi=false}>Showcase</button>
-                    <button class:active={showApi} @click={showApi=true}>API</button>
-                </div>
+<Container xl>
+    <Row>
+        <Col size=3 s=0>
+            <Sidebar/>
+        </Col>
+        <Col size=9 s=12>
+            {#if page}
+                {#if page.api}
+                    <div class="tabs">
+                        <button class:active={!showApi} @click={showApi=false}>Showcase</button>
+                        <button class:active={showApi} @click={showApi=true}>API</button>
+                    </div>
+                {/if}
+                <h2>{page.title}</h2>
+                {#if showApi}
+                    <Api api={page.api}/>
+                {:else}
+                    <component:{page.component} />
+                {/if}
             {/if}
-            <h2>{page.title}</h2>
-            {#if showApi}
-                <Api api={page.api}/>
-            {:else}
-                <component:{page.component} />
-            {/if}
-        {/if}
-    </div>
-</div>
+        </Col>
+    </Row>
+</Container>
+
 
 <style>
-    .wrapper{
-        display:flex;
-        justify-content: center;
-        min-height: 100vh;
-    }
-    .sidebar{
-        width:200px;
-        min-height: 100%;
-        border-right: 1px solid var(--color-soft);
-    }
-    .content{
-        width: 650px;
-        padding: 0px 20px;
-    }
     .tabs{
         float: right;
     }

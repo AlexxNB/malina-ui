@@ -6,6 +6,8 @@ import Button from '@pages/Button.md';
 import Input from '@pages/Input.md';
 import Icon from '@pages/Icon.md';
 import Theming from '@pages/Theming.md';
+import Container from '@pages/Container.md';
+import Grid from '@pages/Grid.md';
 
 export default {
 
@@ -24,22 +26,47 @@ export default {
         component: Typography
     },
 
-    button:{
-        title: 'Button',
-        component: Button,
-        api: api.button
+    layout: {
+        title: 'Layout',
+        sub:{
+            container:{
+                title: 'Container',
+                component: Container,
+                api: api.container
+            },
+        
+            grid:{
+                title: 'Grid',
+                component: Grid
+            }
+        }
+    },
+    form: {
+        title: 'Form',
+        sub:{
+            button:{
+                title: 'Button',
+                component: Button,
+                api: api.button
+            },
+        
+            input:{
+                title: 'Input',
+                component: Input,
+                api: api.input
+            },
+        }
     },
 
-    input:{
-        title: 'Input',
-        component: Input,
-        api: api.input
-    },
-
-    icon:{
-        title: 'Icon',
-        component: Icon,
-        api: api.icon
+    other: {
+        title: 'Other',
+        sub:{
+            icon:{
+                title: 'Icon',
+                component: Icon,
+                api: api.icon
+            },
+        }
     },
 
 }

@@ -16,7 +16,7 @@ if(DEV){
         derver({
             dir: 'docs/public',
             watch: ['docs/public','docs/src','components','lib','icons'],
-            preserveScroll: 70,
+            preserveScroll: 200,
             onwatch: async (lr,item)=>{
                 if(item != 'docs/public'){
                     lr.prevent();

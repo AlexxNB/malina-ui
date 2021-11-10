@@ -1,5 +1,5 @@
 <script>
-    import {theme, Button} from 'malina-ui';
+    import {theme, Button, screen} from 'malina-ui';
     import content from '@/content';
     import route from '@lib/route';
     import {sunIcon,moonIcon,sunMoonIcon} from '@icons';
@@ -22,16 +22,26 @@
 
 </script>
 
+{#fragment:menu items}
+  <ul>
+    {#each Object.keys(items) as pageid}
+        {* const page = items[pageid]}
+        {#if page.component}
+          <li><a href="#{pageid}" class:active={route.$ == pageid}>{page.title}</a></li>
+        {:else}
+          <span>{page.title}</span>
+        {/if}
+        {#if page.sub}
+          <fragment:menu items={page.sub}/>
+        {/if}
+    {/each}
+  </ul>
+{/fragment}
 
 <div class="menu">
   <h4><a href="#main">Mallina-UI</a></h4>
 
-  <ul>
-    {#each Object.keys(content) as pageid}
-      {* const page = content[pageid]}
-      <li><a href="#{pageid}" class:active={route.$ == pageid}>{page.title}</a></li>
-    {/each}
-  </ul>
+  <fragment:menu items={content}/>
 
   <p>
     <a href="https://github.com/AlexxNB/malina-ui" target="_blank">Github</a>
@@ -52,6 +62,9 @@
   }
   li{
     list-style: none;
+  }
+  ul > ul {
+    margin-left: 2rem;
   }
   a{
     text-decoration: none;
