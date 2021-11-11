@@ -94,4 +94,33 @@ export default {
 
     },
 
+    //Row.xht
+    row:{
+        props: [
+            ['gutter',"Space between columns",'number|string',1],
+            ['reverse',"Make columns in back order",'boolean',false],
+        ],
+
+        anchors:[
+            ['^','<div> element']
+        ]
+
+    },
+
+    //Col.xht
+    col:{
+        props: [
+            ['size',"Set size for all screens",'number 0-12',false],
+            ['s',"Set size for small screens",'number 0-12',false],
+            ['m',"Set size for medium screens",'number 0-12',false],
+            ['l',"Set size for large screens",'number 0-12',false],
+            ['xl',"Set size for extra-large screens",'number 0-12',false],
+        ],
+
+        anchors:[
+            ['^','<div> element']
+        ]
+
+    },
+
 }

@@ -33,6 +33,8 @@ Component for centering content on page (or block).
 
 By default container have 96% width. But there are some other predefined sizes - `s`,`m`,`l`, `xl` and also `half`,`third` and `quarter`. If parent is smaller than required size - container width will be also 96% of parent.
 
+> On small screens (<600px) container will expand till 100% of parent width, not 96%.
+
 ```htm example
 <script>
     import {Container} from 'malina-ui';

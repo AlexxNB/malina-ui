@@ -8,6 +8,8 @@ import Icon from '@pages/Icon.md';
 import Theming from '@pages/Theming.md';
 import Container from '@pages/Container.md';
 import Grid from '@pages/Grid.md';
+import Row from '@pages/Row.md';
+import Col from '@pages/Col.md';
 
 export default {
 
@@ -37,7 +39,19 @@ export default {
         
             grid:{
                 title: 'Grid',
-                component: Grid
+                component: Grid,
+                sub:{
+                    row:{
+                        title: 'Rows',
+                        component: Row,
+                        api: api.row
+                    },
+                    col:{
+                        title: 'Columns',
+                        component: Col,
+                        api: api.col
+                    }
+                }
             }
         }
     },

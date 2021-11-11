@@ -1,10 +1,15 @@
 <script>
     export let gutter = 1;
+    export let reverse = false;
 
-    $: style = gutter == 1 ? undefined : `--gutter:${typeof gutter === 'number' ? gutter+'rem': gutter }`
+    $: style = gutter == 1 ? undefined : `--gutter:${Number(gutter) ? Number(gutter)+'rem': gutter }`
 </script>
 
-<div {style} ^><slot/></div>
+<div 
+    class:reverse 
+    {style} 
+    {...$attributes}
+^><slot/></div>
 
 <style>
     div{
@@ -12,5 +17,9 @@
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
+    }
+
+    .reverse{
+        flex-direction: row-reverse;
     }
 </style>
