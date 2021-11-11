@@ -26,16 +26,16 @@
 </script>
 
 {#if type == 'image'}
-	<span {...$attributes} style={styles} @@ ^>
-		<img src="{src}" alt="" width="100%" height="100%" class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style} ^img/>
+	<span {...$attributes} class="$main" style={styles} @@ ^>
+		<img src="{src}" alt="" width="100%" height="100%" class="$img" class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style} ^img/>
 	</span>
 {:else} 
     {#if type == 'sprite'}
-        <svg viewBox={viewbox} {...$attributes} style={styles} @@ ^>
+        <svg viewBox={viewbox} {...$attributes} class="$main" style={styles} @@ ^>
             <use xlink:href={src} class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style}></use>
         </svg>
     {:else}
-        <svg viewBox={viewbox} {...$attributes} style={styles} @@ ^>
+        <svg viewBox={viewbox} {...$attributes} class="$main" style={styles} @@ ^>
         {#if spin !== false}
             <g class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style}>
                 <path d={src}></path>

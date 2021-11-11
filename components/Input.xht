@@ -46,7 +46,7 @@
 {#fragment:input}
     {#if inpType == 'textarea'}
         <textarea 
-            class="radius {stateClasses}" 
+            class="radius {stateClasses} $main" 
             class:loading
             class:iconLP={icon}
             class:iconRP={loading || iconRight}
@@ -57,7 +57,7 @@
     {:else}
         {#if inpType == 'select' || inpType == 'multiple'}
             <select 
-                class="radius {stateClasses}"
+                class="radius {stateClasses} $main"
                 multiple={inpType == 'multiple' || undefined}
                 class:small={small && !multiple}
                 class:multiple={!!multiple}
@@ -70,7 +70,7 @@
             ><slot/></select>
         {:else}
             <input 
-                class="radius {stateClasses}"
+                class="radius {stateClasses} $main"
                 class:small
                 class:loading
                 class:iconLP={icon}
@@ -87,9 +87,9 @@
 {#if !icon && !iconRight && !loading}
     <fragment:input/>
 {:else}
-    <div class="input-has-icon" ^iconWrapper>
+    <div class="input-has-icon $iconWrapper" ^iconWrapper>
 
-        <div class="icon-left" ^iconLeft>
+        <div class="icon-left $iconLeft" ^iconLeft>
         {#if icon}
             <Icon src={icon}/>
         {/if}
@@ -97,7 +97,7 @@
 
         <fragment:input/>
 
-        <div class="icon-right" ^iconRight>
+        <div class="icon-right $iconRight" ^iconRight>
         {#if loading}
             <Icon src={loading == true ? spinner : loading} spin="0.75"/>
         {/if}

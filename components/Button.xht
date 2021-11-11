@@ -38,7 +38,7 @@
 </script>
 
 <button
-  class={`radius ${typeClasses}`}
+  class={`radius ${typeClasses} $main`}
   class:small
   class:loading
   class:iconOnly
@@ -49,10 +49,10 @@
 
 {#fragment:content}
   {#if icon || iconRight}
-    {#if icon}<span class={iconOnly ? "ico" : "ico-l"} ^iconLeft><Icon src={icon}/></span>{/if}
+    {#if icon}<span class="{iconOnly ? "ico" : "ico-l"} $iconLeft" ^iconLeft><Icon src={icon}/></span>{/if}
     {#if !iconOnly}
       <span><slot/></span>
-      {#if iconRight}<span class="ico-r" ^iconRight><Icon src={iconRight}/></span>{/if}
+      {#if iconRight}<span class="ico-r $iconRight" ^iconRight><Icon src={iconRight}/></span>{/if}
     {/if}
   {:else}
     <slot/>
