@@ -1,14 +1,14 @@
 <script>
-    export let gutter = 2;
+    export let gutter = 1;
 
-    $: style = gutter == 2 ? undefined : `--gutter:${typeof gutter === 'number' ? gutter+'rem': gutter }`
+    $: style = gutter == 1 ? undefined : `--gutter:${typeof gutter === 'number' ? gutter+'rem': gutter }`
 </script>
 
 <div {style} ^><slot/></div>
 
 <style>
     div{
-        --gutter: 2rem;
+        --gutter: 1rem;
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
