@@ -10,6 +10,7 @@ import Container from '@pages/Container.md';
 import Grid from '@pages/Grid.md';
 import Row from '@pages/Row.md';
 import Col from '@pages/Col.md';
+import Navbar from '@pages/Navbar.md';
 
 export default {
 
@@ -79,6 +80,11 @@ export default {
                 title: 'Icon',
                 component: Icon,
                 api: api.icon
+            },
+            navbar:{
+                title: 'Navigation bar',
+                component: Navbar,
+                api: api.navbar
             },
         }
     },

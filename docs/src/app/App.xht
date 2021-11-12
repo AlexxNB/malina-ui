@@ -1,5 +1,6 @@
 <script>
-    import {MalinaUI,Container,Row,Col} from 'malina-ui';
+    import {MalinaUI,Container,Row,Col,Navbar,Button,screen} from 'malina-ui';
+    import {menuIcon} from '@icons';
     import Sidebar from '@app/Sidebar.xht';
     import Api from '@app/Api.xht';
     import content from '@/content';
@@ -24,7 +25,12 @@
 </script>
 
 <MalinaUI/>
-
+{#if screen.$.s}
+    <Navbar fixed class="box-shadow">
+        <Button icon={menuIcon} clear hard/>
+        {#slot:right}<h2>{page.title}</h2>{/slot}
+    </Navbar>
+{/if}
 <Container xl>
     <Row>
         <Col size=3 s=0>
@@ -32,13 +38,15 @@
         </Col>
         <Col size=9 s=12>
             {#if page}
-                {#if page.api}
-                    <div class="tabs">
-                        <button class:active={!showApi} @click={showApi=false}>Showcase</button>
-                        <button class:active={showApi} @click={showApi=true}>API</button>
-                    </div>
+                {#if !screen.$.s}
+                    {#if page.api}
+                        <div class="tabs">
+                            <button class:active={!showApi} @click={showApi=false}>Showcase</button>
+                            <button class:active={showApi} @click={showApi=true}>API</button>
+                        </div>
+                    {/if}
+                    <h2>{page.title}</h2>
                 {/if}
-                <h2>{page.title}</h2>
                 {#if showApi}
                     <Api api={page.api}/>
                 {:else}

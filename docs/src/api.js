@@ -36,7 +36,6 @@ export default {
             ['small',"Make smaller button",'boolean',false],
             ['icon',"Add icon before label",'string',false],
             ['iconRight',"Add icon after label",'string',false],
-            ['iconOnly',"Must be used with 'icon' property if no label needed",'boolean',false],
             ['loading',"Show loading state of the button. You may pass valid icon source instead default spinner.",'boolean|string',false],
         ],
 
@@ -120,6 +119,27 @@ export default {
         anchors:[
             ['^','<div> element']
         ]
+
+    },
+
+    //Navbar.xht
+    navbar:{
+        props: [
+            ['fixed',"Navigation bar will not scroll with a page",'boolean',false],
+        ],
+
+        anchors:[
+            ['^','<div> element'],
+            ['^left','<div> element'],
+            ['^center','<div> element'],
+            ['^right','<div> element'],
+        ],
+
+        slots:[
+            ['default','Left area'],
+            ['center','Center area'],
+            ['right','Right area'],
+        ],
 
     },
 

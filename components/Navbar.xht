@@ -1,0 +1,41 @@
+<script>
+    import {Row,Col} from './index.js';
+    export let fixed = false;
+</script>
+
+<div class="nav $main" class:fixed ^>
+    <div class="left $left"><slot /></div>
+    <div class="center $center"><slot:center/></div>
+    <div class="right $right"><slot:right/></div>
+</div>
+
+<style>
+    .nav{
+        display:flex;
+        height: 6rem;
+        padding: .2rem 1rem;
+        flex-flow: row nowrap;
+        align-items: center;
+        background-color: var(--color-bg);
+    }
+    .nav div{
+        display: flex;
+        align-items: center;
+    }
+    .center{
+        flex: 0 0 1;
+    }
+    .left{
+        flex: 1 0 0;
+    }
+    .right{
+        flex: 1 0 0;
+        justify-content: flex-end;
+    }
+
+    .fixed{
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+</style>

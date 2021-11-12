@@ -6,6 +6,7 @@ export {default as Icon} from './Icon.xht';
 export {default as Container} from './Container.xht';
 export {default as Col} from './Col.xht';
 export {default as Row} from './Row.xht';
+export {default as Navbar} from './Navbar.xht';
 
 // Utils
 export {theme} from './../lib/theme.js';

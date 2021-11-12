@@ -2,7 +2,7 @@ const { build } = require('esbuild');
 const { derver } = require('derver');
 const {malinaPlugin} = require('./scripts/malina');
 const {malinaMarkdown} = require('./scripts/markdown');
-const {resolveExamples} = require('./scripts/example');
+const {resolveExamples,clearExamples} = require('./scripts/example');
 
 
 const DEV = process.argv.includes('--dev');
@@ -21,6 +21,7 @@ if(DEV){
                 if(item != 'docs/public'){
                     lr.prevent();
                     try{
+                        clearExamples();
                         await bundle.rebuild();
                     }catch(err){
                         console.log(err.message);
@@ -45,6 +46,7 @@ async function esbuild(options={}){
             resolveExamples(),
             malinaPlugin({
                 css: false,
+                compact: false,
                 plugins: [malinaMarkdown()]
             })
         ],

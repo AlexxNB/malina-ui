@@ -1,7 +1,7 @@
 const malina = require('malinajs');
 const highlight = require('./highlight');
 
-const examples=[];
+let examples=[];
 
 /** Replaces all examples block with placeholders */
 module.exports.parseExamples = function(source){
@@ -58,4 +58,8 @@ module.exports.makeImports = function(source){
 
 module.exports.hasExamples = function(){
     return !!examples.length;
+}
+
+module.exports.clearExamples = function(){
+    examples = [];
 }

@@ -178,13 +178,13 @@ You can add icons at the left and at the right side of button.
     <Button primary icon={gearIcon}>Settings</Button>          
     <Button secondary small iconRight={rightIcon}>Next</Button>          
     <Button primary clear icon={accountIcon} iconRight={downIcon}>Account</Button>          
-    <Button outline icon={menuIcon} iconOnly/>          
-    <Button small error clear icon={deleteIcon} iconOnly/> 
+    <Button outline icon={menuIcon}/>          
+    <Button small error clear icon={deleteIcon}/> 
 </div> 
 ```code
 <Button primary icon={gearIcon}>Settings</Button>          
 <Button secondary small iconRight={rightIcon}>Next</Button>          
 <Button primary clear icon={accountIcon} iconRight={downIcon}>Account</Button>          
-<Button outline icon={menuIcon} iconOnly/>          
-<Button small error clear icon={deleteIcon} iconOnly/>    
+<Button outline icon={menuIcon}/>          
+<Button small error clear icon={deleteIcon}/>    
 ```

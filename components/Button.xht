@@ -26,7 +26,8 @@
     //Icons
     export let icon = false;
     export let iconRight = false;
-    export let iconOnly = false;
+
+    let iconOnly = !$option.slots?.default;
 
     // Util
     $: btnStyle = choose(
