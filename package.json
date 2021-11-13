@@ -40,6 +40,6 @@
     "prismjs": "^1.25.0"
   },
   "dependencies": {
-    "storxy": "^0.1.6"
+    "storxy": "^0.1.7"
   }
 }

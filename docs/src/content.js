@@ -11,6 +11,7 @@ import Grid from '@pages/Grid.md';
 import Row from '@pages/Row.md';
 import Col from '@pages/Col.md';
 import Navbar from '@pages/Navbar.md';
+import Sidebar from '@pages/Sidebar.md';
 
 export default {
 
@@ -85,6 +86,11 @@ export default {
                 title: 'Navigation bar',
                 component: Navbar,
                 api: api.navbar
+            },
+            sidebar:{
+                title: 'Sidebar',
+                component: Sidebar,
+                api: api.sidebar
             },
         }
     },

@@ -28,7 +28,8 @@
 {#if screen.$.s}
     <Navbar fixed class="box-shadow">
         <Button icon={menuIcon} clear hard/>
-        {#slot:right}<h2>{page.title}</h2>{/slot}
+            {#slot:center}<h2>{page.title}</h2>{/slot}
+            {#slot:right}<Button clear small @click={showApi=!showApi}>{showApi ? 'Back' : 'Api >'}</Button>{/slot}
     </Navbar>
 {/if}
 <Container xl>
@@ -65,5 +66,9 @@
 
     .active{
         font-weight: bold;
+    }
+
+    h2{
+        white-space: nowrap;
     }
 </style>

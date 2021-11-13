@@ -143,4 +143,25 @@ export default {
 
     },
 
+    //Sidebar.xht
+    sidebar:{
+        props: [
+            ['size',"Width (or height for top and bottom) of sidebar",'number',20],
+            ['top',"Show sidebar at the top",'boolean',false],
+            ['bottom',"Show sidebar at the bottom",'boolean',false],
+            ['right',"Show sidebar at the right",'boolean',false],
+            ['autoclose',"Close sidebar when click on it or overlay",'boolean',true],
+        ],
+
+        anchors:[
+            ['^','<div> element of sidebar'],
+            ['^overlay','<div> element of overlay'],
+        ],
+
+        slots:[
+            ['default','Sidebar content']
+        ],
+
+    },
+
 }

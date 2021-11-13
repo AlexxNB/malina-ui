@@ -1,0 +1,27 @@
+<script>
+    import {motion}  from 'storxy';
+    export let open = false;
+    export let opacity = 0.8;
+
+    //Animation
+    const motionStore = motion(0);
+    let kOpacity = 0;
+    motionStore.subscribe(v => kOpacity = v);
+    $: open,()=>{motionStore.$ = open ? opacity : 0};
+</script>
+
+{#if kOpacity}
+<div class="$main" @@ ^ style={`opacity: ${kOpacity}`}></div>
+{/if}
+
+<style>
+    div{
+        position: fixed;
+        z-index:2;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background-color: var(--color-bg);
+    }
+</style>
