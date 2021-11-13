@@ -48,7 +48,7 @@
   </p>
 
   <p>
-    <Button icon={icons[theme.$]} clear @click:toggleTheme>{theme.$}</Button>
+    <Button icon={icons[theme.$]} clear @click|stopPropagation:toggleTheme>{theme.$}</Button>
   </p>
 </div>
 

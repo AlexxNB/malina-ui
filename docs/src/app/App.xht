@@ -1,7 +1,7 @@
 <script>
-    import {MalinaUI,Container,Row,Col,Navbar,Button,screen} from 'malina-ui';
+    import {MalinaUI,Container,Row,Col,Navbar,Sidebar,Button,screen} from 'malina-ui';
     import {menuIcon} from '@icons';
-    import Sidebar from '@app/Sidebar.xht';
+    import Menu from '@app/Menu.xht';
     import Api from '@app/Api.xht';
     import content from '@/content';
     import route from '@lib/route';
@@ -22,20 +22,25 @@
 
     $: page = findPage(content,route.$);
     $: page, ()=>showApi=false;
+
+    let sidebar = false;
 </script>
 
 <MalinaUI/>
 {#if screen.$.s}
+    <Sidebar :open={sidebar} class="sidebar box-shadow" size="20">
+        <Menu/>
+    </Sidebar>
     <Navbar fixed class="box-shadow">
-        <Button icon={menuIcon} clear hard/>
-            {#slot:center}<h2>{page.title}</h2>{/slot}
-            {#slot:right}<Button clear small @click={showApi=!showApi}>{showApi ? 'Back' : 'Api >'}</Button>{/slot}
+        <Button icon={menuIcon} clear hard @click={sidebar=true}/>
+        {#slot:center}<h2>{page.title}</h2>{/slot}
+        {#slot:right}{#if page.api}<Button clear small @click={showApi=!showApi}>{showApi ? 'Back' : 'Api >'}</Button>{/if}{/slot}
     </Navbar>
 {/if}
 <Container xl>
     <Row>
         <Col size=3 s=0>
-            <Sidebar/>
+            <Menu/>
         </Col>
         <Col size=9 s=12>
             {#if page}
@@ -66,6 +71,10 @@
 
     .active{
         font-weight: bold;
+    }
+
+    .sidebar{
+        padding:2rem;
     }
 
     h2{
