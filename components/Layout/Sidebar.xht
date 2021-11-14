@@ -12,19 +12,19 @@
     export let top = false;
     export let right = false;
     export let bottom = false;
+
     $: left = !right && !top && !bottom;
     $: nSize = Number(size);
 
     //Animation
-    const motionStore = motion(0);
-    let kSize = 0;
-    motionStore.subscribe(v => kSize = v);
-    $: open,()=>{motionStore.$ = open ? nSize : 0};
+    const kSize = motion(0);
+    $runtime.autoSubscribe(kSize);
 
-    $: style = getStyle(left,right,top,bottom,nSize,kSize)
+    $: open,()=>{kSize.$ = open ? nSize : 0};
+    $: style = getStyle(left,right,top,bottom,nSize,kSize.$);
 </script>
 
-{#if kSize !== 0}
+{#if kSize.$ !== 0}
     <Overlay {open} @click={autoclose && (open=false)} class="$overlay"/>
     <div class="sidebar $main"
         {style}

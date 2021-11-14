@@ -4,14 +4,14 @@
     export let opacity = 0.8;
 
     //Animation
-    const motionStore = motion(0);
-    let kOpacity = 0;
-    motionStore.subscribe(v => kOpacity = v);
-    $: open,()=>{motionStore.$ = open ? opacity : 0};
+    const kOpacity = motion(0);
+    $runtime.autoSubscribe(kOpacity);
+
+    $: open,()=>{kOpacity.$ = open ? opacity : 0};
 </script>
 
-{#if kOpacity}
-<div class="$main" @@ ^ style={`opacity: ${kOpacity}`}></div>
+{#if kOpacity.$}
+    <div class="$main" @@ ^ style={`opacity: ${kOpacity.$}`}></div>
 {/if}
 
 <style>
