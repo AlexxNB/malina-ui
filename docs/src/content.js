@@ -54,7 +54,17 @@ export default {
                         api: api.col
                     }
                 }
-            }
+            },
+            navbar:{
+                title: 'Navigation bar',
+                component: Navbar,
+                api: api.navbar
+            },
+            sidebar:{
+                title: 'Sidebar',
+                component: Sidebar,
+                api: api.sidebar
+            },
         }
     },
     form: {
@@ -81,16 +91,6 @@ export default {
                 title: 'Icon',
                 component: Icon,
                 api: api.icon
-            },
-            navbar:{
-                title: 'Navigation bar',
-                component: Navbar,
-                api: api.navbar
-            },
-            sidebar:{
-                title: 'Sidebar',
-                component: Sidebar,
-                api: api.sidebar
             },
         }
     },
