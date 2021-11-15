@@ -4,6 +4,7 @@ import Main from '@pages/Main.md';
 import Typography from '@pages/Typography.xht';
 import Button from '@pages/Button.md';
 import Input from '@pages/Input.md';
+import Field from '@pages/Field.md';
 import Icon from '@pages/Icon.md';
 import Theming from '@pages/Theming.md';
 import Container from '@pages/Container.md';
@@ -80,6 +81,12 @@ export default {
                 title: 'Input',
                 component: Input,
                 api: api.input
+            },
+
+            field:{
+                title: 'Field',
+                component: Field,
+                api: api.field
             },
         }
     },

@@ -22,11 +22,25 @@
     export let error = false;
     export let success = false;
     export let warning = false;
+    export let disabled = false;
     export let loading = false;
 
     // Icons
     export let icon = false;
     export let iconRight = false;
+
+    // Context state
+    const state = $context.fieldState;
+    state && $runtime.autoSubscribe(state);
+
+    $: state,()=>{
+        if(!state) return;
+        error=state.$=='error';
+        success=state.$=='success';
+        warning=state.$=='warning';
+        disabled=state.$=='disabled';
+        loading=state.$=='loading';
+    }
 
 
     // Util
@@ -50,7 +64,9 @@
             class:loading
             class:iconLP={icon}
             class:iconRP={loading || iconRight}
+            class:infield={state}
             :value={value}
+            {disabled}
             {...$attributes}
             ^ @@
         />
@@ -64,6 +80,8 @@
                 class:loading
                 class:iconLP={icon}
                 class:iconRP={loading || iconRight}
+                class:infield={state}
+                {disabled}
                 :value={value}
                 {...$attributes}
                 ^ @@
@@ -75,7 +93,9 @@
                 class:loading
                 class:iconLP={icon}
                 class:iconRP={loading || iconRight}
+                class:infield={state}
                 type={inpType}
+                {disabled}
                 :value={value}
                 {...$attributes}
                 ^ @@
@@ -87,7 +107,7 @@
 {#if !icon && !iconRight && !loading}
     <fragment:input/>
 {:else}
-    <div class="input-has-icon $iconWrapper" ^iconWrapper>
+    <div class="input-has-icon $iconWrapper" class:infield={state} ^iconWrapper>
 
         <div class="icon-left $iconLeft" ^iconLeft>
         {#if icon}
@@ -99,7 +119,7 @@
 
         <div class="icon-right $iconRight" ^iconRight>
         {#if loading}
-            <Icon src={loading == true ? spinner : loading} spin="0.75"/>
+            <Icon src={loading == true ? spinner : loading} spin="0.75" />
         {/if}
         {#if !loading && iconRight}
             <Icon src={iconRight}/>
@@ -112,7 +132,7 @@
 
     input,textarea,select{
         padding: .5rem .7rem;
-        height: 3.8rem;
+        height: 4rem;
         width: 100%;
         outline: 0;
         transition: .25s;
@@ -134,7 +154,7 @@
 
     .small{
         padding: 0 1rem;
-        height: 2.6rem;
+        height: 3rem;
         font-size: .8em;
     }
 
@@ -165,6 +185,7 @@
 
     .input-has-icon{
         position: relative;
+        width:100%;
     }
 
     .icon-right{

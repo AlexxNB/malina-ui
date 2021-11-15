@@ -1,4 +1,4 @@
-Button component
+A Button component
 
 ```htm
 <script>

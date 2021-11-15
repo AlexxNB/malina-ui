@@ -1,0 +1,127 @@
+<script>
+    import {choose,isSlot} from './../../lib/utils';
+    import {store} from 'storxy';
+
+    // Label 
+    export let label = null;
+    export let compact = false;
+
+    // States
+    export let error = false;
+    export let warning = false;
+    export let success = false;
+    export let disabled = false;
+    export let loading = false;
+
+    const slotLabel = isSlot($option,'label');
+
+    // Variants 
+    export let gapless = false;
+
+    //state class
+    $: msgClass = choose(
+        ['txt-error','txt-warning','txt-success','dimmed','dimmed'],
+        [ error,  warning,  success, disabled, loading],
+      null);
+
+    $: msgText = error || warning || success || disabled || loading || null;
+
+    // State context
+    const state = store(null);
+    $context.fieldState = state;
+
+    $: state.$ = choose(
+        ['error','warning','success','disabled','loading'],
+        [ error,  warning,  success, disabled, loading],
+      null);
+</script>
+
+{#fragment:label text compact}
+    <label class="$label" class:compact ^label>
+        {#if slotLabel}
+            <slot:label/>
+        {:else}
+            {#if text}{text}{/if}
+        {/if}
+    </label>
+{/fragment}
+
+{#fragment:inputs}
+    <div class="inputs $fields" class:gapless ^fields><slot/></div>
+{/fragment}
+
+
+<div class="field $main" ^ @@>
+{#if compact}
+    <div class="compact-field">
+        <fragment:label text={label} compact/>
+        <fragment:inputs><slot/></fragment:inputs>
+    </div>
+{:else}
+    <fragment:label text={label}/>
+    <fragment:inputs><slot/></fragment:inputs>
+{/if}
+{#if typeof msgText == 'string'}
+    <span class="{msgClass} $message" ^message>{msgText}</span>
+{/if}
+</div>
+
+<style>
+    .compact-field{
+        display:flex;
+        flex-flow: row nowrap;
+        gap: 2rem;
+    }
+
+    label{
+        display: block;
+        font-weight: 400;
+        letter-spacing: -.1rem;
+    }
+
+    .compact{
+        display: inline-flex;
+        flex: 15rem;
+        align-self: center;
+        margin-bottom: 2rem;
+    }
+    
+    .inputs{
+        display:flex;
+        flex-flow: row nowrap;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+
+    span{
+        display: block;
+        font-size: 1.4rem;
+        line-height: 1.45;
+        text-align:right;
+        margin-top: -2rem;
+    }
+    
+    .dimmed {
+        opacity: .6;
+    }
+
+    .gapless{
+        gap:0;
+    }
+
+    .gapless > :global(.infield){
+        border-radius: 0;
+    }
+    
+    .gapless :global(.infield:first-child > .infield),
+    .gapless :global(.infield:first-child){
+        border-radius: var(--radius) 0 0 var(--radius);
+    }
+
+    .gapless :global(.infield:last-child > .infield),
+    .gapless :global(.infield:last-child){
+        border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+</style>

@@ -2,7 +2,7 @@
     import {Icon} from './../index';
     import {spinner} from './../../icons';
     import {getClasses} from './../../lib/button';
-    import {choose} from './../../lib/utils';
+    import {choose,isSlot} from './../../lib/utils';
 
     // Button color
     export let primary = false;
@@ -27,7 +27,9 @@
     export let icon = false;
     export let iconRight = false;
 
-    let iconOnly = !$option.slots?.default;
+    const state = $context.fieldState;
+
+    let iconOnly = !isSlot($option);
 
     // Util
     $: btnStyle = choose(
@@ -43,6 +45,7 @@
   class:small
   class:loading
   class:iconOnly
+  class:infield={state}
   {...$attributes}
   @@ 
   ^
@@ -73,7 +76,7 @@
     display: inline-flex;
     white-space: nowrap;
     padding: 0 3rem;
-    height: 3.8rem;
+    height: 4rem;
     cursor:pointer;
     transition: opacity .25s;
     font-weight: bold;
@@ -89,7 +92,7 @@
 
   .small{
     padding: 0 1rem;
-    height: 2.6rem;
+    height: 3rem;
     font-size: .8em;
   }
 

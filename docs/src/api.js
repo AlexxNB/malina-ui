@@ -62,6 +62,7 @@ export default {
             ['error',"Error state for input",'boolean',false],
             ['warning',"Warning state for input",'boolean',false],
             ['success',"Success state for input",'boolean',false],
+            ['disabled',"Disabled state for input",'boolean',false],
             ['loading',"Loading state for input. You may pass valid icon source instead default spinner.",'boolean|string',false],
             ['icon',"Source for icon on the left side",'string',false],
             ['iconRight',"Source for icon on the right side",'string',false],
@@ -72,6 +73,28 @@ export default {
             ['^iconWrapper','<div> element which is wraped around input and icons.'],
             ['^iconLeft','<div> element for left icon'],
             ['^iconRight','<div> element for right icon (includes also a spinner for loading state)'],
+        ]
+
+    },
+
+    //Field.xht
+    field:{
+
+        props: [
+            ['label',"Label for inputs",'string',false],
+            ['compact',"Show field in one row",'boolean',false],
+            ['error',"Error state for inputs",'boolean|string',false],
+            ['warning',"Warning state for inputs",'boolean|string',false],
+            ['success',"Success state for inputs",'boolean|string',false],
+            ['disabled',"Disabled state for inputs",'boolean|string',false],
+            ['loading',"Loading state for inputs.",'boolean|string',false],
+            ['gapless',"Remove gap between grouped inputs",'boolean',false],
+        ],
+
+        anchors:[
+            ['^','<div> element'],
+            ['^label','<label> element.'],
+            ['^message','<span> element for mesage'],
         ]
 
     },

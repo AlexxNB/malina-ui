@@ -1,4 +1,4 @@
-Component for centering content on page (or block).
+A component for centering content on a page.
 
 ```htm
 <script>
@@ -31,9 +31,7 @@ Component for centering content on page (or block).
 
 #### Sizes
 
-By default container have 96% width. But there are some other predefined sizes - `s`,`m`,`l`, `xl` and also `half`,`third` and `quarter`. If parent is smaller than required size - container width will be also 96% of parent.
-
-> On small screens (<600px) container will expand till 100% of parent width, not 96%.
+By default, Container have 96% width. But there are some other predefined sizes - `s`,`m`,`l`, `xl` and also `half`,`third` and `quarter`. If parent is smaller than required size - container width will be 96% of parent.
 
 ```htm example
 <script>
@@ -55,7 +53,10 @@ By default container have 96% width. But there are some other predefined sizes -
 ```code
 <Container>Common</Container>
 <Container s>S - 40rem - 400px</Container>
-<Container m>M - 60rem - 600px</Container>
+<Container m>M - 50rem - 500px</Container>
 <Container l>L - 80rem - 800px</Container>
 <Container xl>XL - 100rem - 1000px</Container>
+<Container half>Half - 50%</Container>
+<Container third>Third - 33%</Container>
+<Container quarter>Quarter - 25%</Container>
 ```
