@@ -121,6 +121,28 @@ export default {
 
     },
 
+    //Radio.xht
+    radio:{
+
+        props: [
+            ['checked',"Bind to this prop to get current state",'boolean',false],
+            ['group',"Bind multiple radio to this prop to get result oneof them",'any',null],
+            ['value',"Value attrubute. Requred when binding to group prop",'any',false],
+            ['error',"Error state for checkbox",'boolean',false],
+            ['warning',"Warning state for checkbox",'boolean',false],
+            ['success',"Success state for checkbox",'boolean',false],
+            ['disabled',"Disabled state for checkbox",'boolean',false],
+            ['loading',"Loading state for checkbox.",'boolean',false],
+        ],
+
+        anchors:[
+            ['^','<input> element of radio button(hidden)'],
+            ['^radio','<div> element, custom styled radio button'],
+            ['^label','<label> wrapper for radio button'],
+        ]
+
+    },
+
 
     //Container.xht
     container:{

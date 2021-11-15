@@ -5,6 +5,7 @@ export {default as Button} from './Form/Button.xht';
 export {default as Input} from './Form/Input.xht';
 export {default as Field} from './Form/Field.xht';
 export {default as Checkbox} from './Form/Checkbox.xht';
+export {default as Radio} from './Form/Radio.xht';
 
 // Layout
 export {default as Container} from './Layout/Container.xht';

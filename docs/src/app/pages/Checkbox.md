@@ -29,9 +29,9 @@ Bind to `group` property of several Checkboxes to store their state in object. Y
 </script>
 
 <p>
-    <Checkbox bind:group={list} value="apple">Apple</Checkbox><br/>
-    <Checkbox bind:group={list} value="orange">Orange</Checkbox><br/> 
-    <Checkbox bind:group={list} value="grapes">Grapes</Checkbox>
+    <Checkbox :group={list} value="apple">Apple</Checkbox><br/>
+    <Checkbox :group={list} value="orange">Orange</Checkbox><br/> 
+    <Checkbox :group={list} value="grapes">Grapes</Checkbox>
 </p>
 <p><Button small @click={list=[]}>Clear</Button></p>
 <p>Selected: {list}</p>

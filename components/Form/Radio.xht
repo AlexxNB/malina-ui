@@ -1,6 +1,6 @@
 <script>
     import {Icon} from './../index';
-    import {check,spinner} from './../../icons';
+    import {circle,spinner} from './../../icons';
     import {choose,isSlot} from '../../lib/utils';
 
     export let checked = false;
@@ -14,15 +14,12 @@
     export let loading = false;
     export let disabled = false;
 
-    $: group,()=>{
-        if(value && !group.includes(value)) checked=false;
+    $: checked,()=>{
+        if(value && checked) group=value;
     }
 
-    $: checked,()=>{
-        if(value) {
-            if(!!checked === group.includes(value)) return;
-            checked ? group.push(value) : group=group.filter(v=>v!==value);
-        };
+    $: group,()=>{
+        checked=value && group === value;
     }
 
     $: stateClasses = choose(
@@ -40,12 +37,12 @@
         {...$attributes}
         :checked={checked}  
     @@ ^/>
-    <div class="{stateClasses} $checkbox" ^checkbox>
+    <div class="{stateClasses} $radio" ^radio>
         <span>
             {#if loading}
                 <Icon src={spinner} size="1.6rem" spin="0.5"/>
             {:else}
-                <Icon src={check} size="1.6rem"/>
+                <Icon src={circle} size="1.6rem"/>
             {/if}
         </span>
     </div>
@@ -68,7 +65,7 @@
         background-color: var(--color-bg);
         width: 2rem;
         height: 2rem;
-        border-radius: .3rem;
+        border-radius: 50%;
         margin-bottom: .2rem;
         margin-right: .2rem;
         vertical-align: middle;
