@@ -38,7 +38,7 @@ Bind to `group` property of several Radio to get value one of them. You must pro
 
 #### States
 
-Use `error`,`warning`,`success`,`disabled` and `loading` properties to set corresponding view of the Checkbox.
+Use `error`,`warning`,`success`,`disabled` and `loading` properties to set corresponding view of the Radio.
 
 ```htm example
 <script>

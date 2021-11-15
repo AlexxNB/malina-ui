@@ -13,16 +13,14 @@
     export let success = false;
     export let loading = false;
     export let disabled = false;
-
-    $: group,()=>{
-        if(value && !group.includes(value)) checked=false;
-    }
-
+    
     $: checked,()=>{
-        if(value) {
             if(!!checked === group.includes(value)) return;
             checked ? group.push(value) : group=group.filter(v=>v!==value);
-        };
+    }
+
+    $: group,()=>{
+        if(!group.includes(value)) checked=false;
     }
 
     $: stateClasses = choose(
@@ -99,11 +97,6 @@
     input:focus+div.bd-success{
         border-color: var(--color-success);
         box-shadow: 0 0 2px var(--color-success);
-    }
-
-    input:focus+div.bd-warning{
-        border-color: var(--color-warning);
-        box-shadow: 0 0 2px var(--color-warning);
     }
 
     input:focus+div.bd-warning{

@@ -15,17 +15,18 @@
     export let disabled = false;
 
     $: checked,()=>{
-        if(checked) group=value;
+            if(!!checked === group.includes(value)) return;
+            checked ? group.push(value) : group=group.filter(v=>v!==value);
     }
 
     $: group,()=>{
-        checked = group === value;
+        if(!group.includes(value)) checked=false;
     }
 
     $: stateClasses = choose(
-        ['bd-error txt-error','bd-success txt-success','bd-warning txt-warning'],
+        ['bd-error bg-neutral','bd-success bg-neutral','bd-warning bg-neutral'],
         [ error,  success,  warning],
-      'bd-neutral txt-primary');
+      'bd-neutral bg-neutral');
 </script>
 
 <label ^label class="$label" class:loading class:disabled>
@@ -37,7 +38,7 @@
         {...$attributes}
         :checked={checked}  
     @@ ^/>
-    <div class="{stateClasses} $radio" ^radio>
+    <div class="{stateClasses} $switch" ^switch>
         <span>
             {#if loading}
                 <Icon src={spinner} size="1.6rem" spin="0.5"/>
@@ -62,50 +63,61 @@
         user-select: none;
         display: inline-block;
         border-width: 2px;
-        background-color: var(--color-bg);
-        width: 2rem;
+        width: 3.5rem;
         height: 2rem;
-        border-radius: 50%;
+        border-radius: 1rem;
         margin-bottom: .2rem;
         margin-right: .2rem;
         vertical-align: middle;
     }
+
     input+div span{
+        color: var(--color-bg);
         display: block;
         line-height: .5rem;
-        opacity: 0;
-        transition: opacity .25s, border-color .25s;
+        transition: margin-left .25s, border-color .25s;
     }
 
-    input:checked+div span,.loading input+div span{
+    input:checked+div{
+        border-color: var(--color-primary);
+        background-color: var(--color-primary);
+    }
+
+    input:checked+div span{
         display: block;
         line-height: .5rem;
-        opacity: 1;
+        margin-left: 1.5rem;
     }
 
     input:focus+div{
-        border-color: var(--color-primary);
         box-shadow: 0 0 2px var(--color-primary);
     }
 
     input:focus+div.bd-error{
-        border-color: var(--color-error);
         box-shadow: 0 0 2px var(--color-error);
     }
 
     input:focus+div.bd-success{
-        border-color: var(--color-success);
         box-shadow: 0 0 2px var(--color-success);
     }
 
     input:focus+div.bd-warning{
-        border-color: var(--color-warning);
         box-shadow: 0 0 2px var(--color-warning);
     }
 
-    input:focus+div.bd-warning{
+     input:checked+div.bd-error{
+        border-color: var(--color-error);
+        background-color: var(--color-error);
+    }
+
+    input:checked+div.bd-success{
+        border-color: var(--color-success);
+        background-color: var(--color-success);
+    }
+
+    input:checked+div.bd-warning{
         border-color: var(--color-warning);
-        box-shadow: 0 0 2px var(--color-warning);
+        background-color: var(--color-warning);
     }
 
     .loading {

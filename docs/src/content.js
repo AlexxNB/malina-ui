@@ -6,6 +6,7 @@ import Button from '@pages/Button.md';
 import Input from '@pages/Input.md';
 import Field from '@pages/Field.md';
 import Checkbox from '@pages/Checkbox.md';
+import Switch from '@pages/Switch.md';
 import Radio from '@pages/Radio.md';
 import Icon from '@pages/Icon.md';
 import Theming from '@pages/Theming.md';
@@ -95,6 +96,12 @@ export default {
                 title: 'Checkbox',
                 component: Checkbox,
                 api: api.checkbox
+            },
+
+            switch:{
+                title: 'Switch',
+                component: Switch,
+                api: api.switch
             },
 
             radio:{

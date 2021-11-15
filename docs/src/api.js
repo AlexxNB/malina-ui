@@ -121,6 +121,28 @@ export default {
 
     },
 
+    //Switch.xht
+    switch:{
+
+        props: [
+            ['checked',"Bind to this prop to get current state",'boolean',false],
+            ['group',"Bind multiple switches to this prop to get result as array",'Array',[]],
+            ['value',"Value attrubute. Requred when binding to group prop",'any',false],
+            ['error',"Error state for switch",'boolean',false],
+            ['warning',"Warning state for switch",'boolean',false],
+            ['success',"Success state for switch",'boolean',false],
+            ['disabled',"Disabled state for switch",'boolean',false],
+            ['loading',"Loading state for switch.",'boolean',false],
+        ],
+
+        anchors:[
+            ['^','<input> element of switch(hidden)'],
+            ['^switch','<div> element, custom styled switch'],
+            ['^label','<label> wrapper for switch'],
+        ]
+
+    },
+
     //Radio.xht
     radio:{
 
