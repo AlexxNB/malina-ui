@@ -99,6 +99,28 @@ export default {
 
     },
 
+    //Checkbox.xht
+    checkbox:{
+
+        props: [
+            ['checked',"Bind to this prop to get current state",'boolean',false],
+            ['group',"Bind multiple checkboxes to this prop to get result as array",'Array',[]],
+            ['value',"Value attrubute. Requred when binding to group prop",'any',false],
+            ['error',"Error state for checkbox",'boolean',false],
+            ['warning',"Warning state for checkbox",'boolean',false],
+            ['success',"Success state for checkbox",'boolean',false],
+            ['disabled',"Disabled state for checkbox",'boolean',false],
+            ['loading',"Loading state for checkbox.",'boolean',false],
+        ],
+
+        anchors:[
+            ['^','<input> element of checkbox(hidden)'],
+            ['^checkbox','<div> element, custom styled checkbox'],
+            ['^label','<label> wrapper for checkbox'],
+        ]
+
+    },
+
 
     //Container.xht
     container:{

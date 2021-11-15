@@ -93,7 +93,7 @@ export default {
             checkbox:{
                 title: 'Checkbox',
                 component: Checkbox,
-                //api: api.checkbox
+                api: api.checkbox
             },
         }
     },

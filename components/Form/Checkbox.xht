@@ -36,9 +36,11 @@
         type="checkbox" 
         class="$main"
         {disabled}
+        {value}
+        {...$attributes}
         :checked={checked}  
     @@ ^/>
-    <div class={stateClasses}>
+    <div class="{stateClasses} checkbox" ^checkbox>
         <span>
             {#if loading}
                 <Icon src={spinner} size="1.6rem" spin="0.5"/>
@@ -82,7 +84,7 @@
         display: block;
         line-height: .5rem;
         opacity: 0;
-        transition: opacity .25s;
+        transition: opacity .25s, border-color .25s;
     }
 
     input:checked+div span,.loading input+div span{
@@ -93,27 +95,27 @@
 
     input:focus+div{
         border-color: var(--color-primary);
-        box-shadow: 0 0 3px var(--color-primary);
+        box-shadow: 0 0 2px var(--color-primary);
     }
 
     input:focus+div.bd-error{
         border-color: var(--color-error);
-        box-shadow: 0 0 3px var(--color-error);
+        box-shadow: 0 0 2px var(--color-error);
     }
 
     input:focus+div.bd-success{
         border-color: var(--color-success);
-        box-shadow: 0 0 3px var(--color-success);
+        box-shadow: 0 0 2px var(--color-success);
     }
 
     input:focus+div.bd-warning{
         border-color: var(--color-warning);
-        box-shadow: 0 0 3px var(--color-warning);
+        box-shadow: 0 0 2px var(--color-warning);
     }
 
     input:focus+div.bd-warning{
         border-color: var(--color-warning);
-        box-shadow: 0 0 3px var(--color-warning);
+        box-shadow: 0 0 2px var(--color-warning);
     }
 
     .loading {
