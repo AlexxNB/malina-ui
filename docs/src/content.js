@@ -5,6 +5,7 @@ import Typography from '@pages/Typography.xht';
 import Button from '@pages/Button.md';
 import Input from '@pages/Input.md';
 import Field from '@pages/Field.md';
+import Checkbox from '@pages/Checkbox.md';
 import Icon from '@pages/Icon.md';
 import Theming from '@pages/Theming.md';
 import Container from '@pages/Container.md';
@@ -87,6 +88,12 @@ export default {
                 title: 'Field',
                 component: Field,
                 api: api.field
+            },
+
+            checkbox:{
+                title: 'Checkbox',
+                component: Checkbox,
+                //api: api.checkbox
             },
         }
     },

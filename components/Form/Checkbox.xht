@@ -1,0 +1,128 @@
+<script>
+    import {Icon} from './../index';
+    import {check,spinner} from './../../icons';
+    import {choose,isSlot} from '../../lib/utils';
+
+    export let checked = false;
+    export let value = false;
+    export let group = [];
+
+    //States
+    export let error = false;
+    export let warning = false;
+    export let success = false;
+    export let loading = false;
+    export let disabled = false;
+
+    $: group,()=>{
+        if(value && !group.includes(value)) checked=false;
+    }
+
+    $: checked,()=>{
+        if(value) {
+            if(!!checked === group.includes(value)) return;
+            checked ? group.push(value) : group=group.filter(v=>v!==value);
+        };
+    }
+
+    $: stateClasses = choose(
+        ['bd-error txt-error','bd-success txt-success','bd-warning txt-warning'],
+        [ error,  success,  warning],
+      'bd-neutral txt-primary');
+</script>
+
+<label ^label class="$label" class:loading class:disabled>
+    <input 
+        type="checkbox" 
+        class="$main"
+        {disabled}
+        :checked={checked}  
+    @@ ^/>
+    <div class={stateClasses}>
+        <span>
+            {#if loading}
+                <Icon src={spinner} size="1.6rem" spin="0.5"/>
+            {:else}
+                <Icon src={check} size="1.6rem"/>
+            {/if}
+        </span>
+    </div>
+    <slot/>
+</label>
+
+
+{#if isSlot($option)}
+    
+{:else}
+    <fragment:checkbox/>
+{/if}
+
+<style>
+    label{
+        cursor: pointer;
+    }
+    input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    input+div {
+        user-select: none;
+        display: inline-block;
+        border-width: 2px;
+        background-color: var(--color-bg);
+        width: 2rem;
+        height: 2rem;
+        border-radius: .3rem;
+        margin-bottom: .2rem;
+        margin-right: .2rem;
+        vertical-align: middle;
+    }
+    input+div span{
+        display: block;
+        line-height: .5rem;
+        opacity: 0;
+        transition: opacity .25s;
+    }
+
+    input:checked+div span,.loading input+div span{
+        display: block;
+        line-height: .5rem;
+        opacity: 1;
+    }
+
+    input:focus+div{
+        border-color: var(--color-primary);
+        box-shadow: 0 0 3px var(--color-primary);
+    }
+
+    input:focus+div.bd-error{
+        border-color: var(--color-error);
+        box-shadow: 0 0 3px var(--color-error);
+    }
+
+    input:focus+div.bd-success{
+        border-color: var(--color-success);
+        box-shadow: 0 0 3px var(--color-success);
+    }
+
+    input:focus+div.bd-warning{
+        border-color: var(--color-warning);
+        box-shadow: 0 0 3px var(--color-warning);
+    }
+
+    input:focus+div.bd-warning{
+        border-color: var(--color-warning);
+        box-shadow: 0 0 3px var(--color-warning);
+    }
+
+    .loading {
+        pointer-events: none;
+        opacity: .6;
+    }
+
+    .disabled {
+        opacity: .4;
+    }
+    
+</style>
