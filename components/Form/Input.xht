@@ -145,7 +145,7 @@
 
     input:focus, textarea:focus,select:focus{
         border-color: var(--color-primary);
-        box-shadow: 0 0 2px var(--color-primary);
+        box-shadow: var(--input-shadow-primary);
     }
 
     input::placeholder, textarea::placeholder, select::placeholder{
@@ -165,17 +165,17 @@
 
     .bd-error:focus{
        border-color: var(--color-error);
-       box-shadow: 0 0 2px var(--color-error);
+       box-shadow: var(--input-shadow-error)
     }
 
     .bd-success:focus{
        border-color: var(--color-success);
-       box-shadow: 0 0 2px var(--color-success);
+       box-shadow: var(--input-shadow-success);
     }
 
     .bd-warning:focus{
        border-color: var(--color-warning);
-       box-shadow: 0 0 2px var(--color-warning);
+       box-shadow: var(--input-shadow-warning);
     }
 
     .loading {

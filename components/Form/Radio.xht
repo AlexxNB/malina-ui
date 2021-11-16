@@ -85,27 +85,19 @@
 
     input:focus+div{
         border-color: var(--color-primary);
-        box-shadow: 0 0 2px var(--color-primary);
+        box-shadow: var(--input-shadow-primary);
     }
 
     input:focus+div.bd-error{
-        border-color: var(--color-error);
-        box-shadow: 0 0 2px var(--color-error);
+        box-shadow: var(--input-shadow-error);
     }
 
     input:focus+div.bd-success{
-        border-color: var(--color-success);
-        box-shadow: 0 0 2px var(--color-success);
+        box-shadow: var(--input-shadow-success);
     }
 
     input:focus+div.bd-warning{
-        border-color: var(--color-warning);
-        box-shadow: 0 0 2px var(--color-warning);
-    }
-
-    input:focus+div.bd-warning{
-        border-color: var(--color-warning);
-        box-shadow: 0 0 2px var(--color-warning);
+        box-shadow: var(--input-shadow-warning);
     }
 
     .loading {
