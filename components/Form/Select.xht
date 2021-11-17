@@ -1,0 +1,85 @@
+<script>
+    import {Input} from './../index';
+    import {choose,isSlot} from '../../lib/utils';
+    import {handleValue,getValue,getLabel} from '../../lib/input';
+    import {chevronDown} from '../../icons';
+
+    export let options = undefined;
+    export let value = undefined;
+    export let placeholder = false;
+
+    // Size
+    export let small = false;
+
+    // State
+    export let error = false;
+    export let success = false;
+    export let warning = false;
+    export let disabled = false;
+    export let loading = false;
+
+    // Icons
+    export let icon = false;
+
+    $: isOptions = Array.isArray(options);
+
+    let select;
+    $onMount(async ()=>{
+        $tick(()=>{
+            setSelected(value);
+         //   setValue();
+        });
+    });
+
+    function index(i){
+        return isOptions && placeholder ? i-1 : i;
+    }
+
+    function setValue(){
+        value = isOptions ? getValue(options[index(select.selectedIndex)]) : handleValue(select.value);
+    }
+
+    function setSelected(value){
+        if(!select) return;
+        const opts = select.getElementsByTagName('option');
+        const values = (isOptions ? options : Array.from(opts)).map(o => handleValue(getValue(o)));
+        for(let i in opts){
+            if(placeholder && i==0) continue;
+            opts[i].selected = value === values[index(i)];
+        }
+    }
+
+    $: value,()=>setSelected(value);
+</script>
+
+<Input type="select"
+    class="select $main"
+    iconRight={chevronDown}
+    @change={setValue}
+    {small}
+    {error}
+    {success}
+    {warning}
+    {disabled}
+    {loading}
+    {icon}
+    {...$attributes}
+@@>
+<^ ^ #select/>
+{#if placeholder}
+    <option value={undefined} disabled selected>{placeholder}</option>
+{/if}
+{#if !isOptions || isSlot($option)}
+    <slot/>
+{:else}
+    {#each options as o}
+        <option value={getValue(o)} disabled={o.disabled}>{getLabel(o)}</option>
+    {/each}
+{/if}
+</Input>
+<style>
+    .select{
+        appearance: none;
+        cursor:pointer;
+    }
+</style>

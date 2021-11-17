@@ -4,6 +4,7 @@ import Main from '@pages/Main.md';
 import Typography from '@pages/Typography.xht';
 import Button from '@pages/Button.md';
 import Input from '@pages/Input.md';
+import Select from '@pages/Select.md';
 import Field from '@pages/Field.md';
 import Checkbox from '@pages/Checkbox.md';
 import Switch from '@pages/Switch.md';
@@ -84,6 +85,12 @@ export default {
                 title: 'Input',
                 component: Input,
                 api: api.input
+            },
+
+            select:{
+                title: 'Select',
+                component: Select,
+                api: api.select
             },
 
             field:{

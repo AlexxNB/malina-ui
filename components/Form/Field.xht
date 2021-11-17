@@ -110,8 +110,13 @@
         gap:0;
     }
 
-    .gapless > :global(.infield){
+    .gapless :global(.infield){
         border-radius: 0;
+    }
+
+    .gapless :global(.infield:not(:last-child) > .infield),
+    .gapless :global(.infield:not(:last-child)){
+        border-right: none;
     }
     
     .gapless :global(.infield:first-child > .infield),

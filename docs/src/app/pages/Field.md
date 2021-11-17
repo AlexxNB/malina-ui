@@ -48,7 +48,7 @@ You can set state for inputs inside Field using properties `error`,`success`,`wa
 
 ```htm example
 <script>
-    import {Field,Input} from 'malina-ui';
+    import {Field,Input,Select} from 'malina-ui';
 </script>
 
 <Field label="Error" error>
@@ -60,7 +60,7 @@ You can set state for inputs inside Field using properties `error`,`success`,`wa
 </Field>
 
 <Field label="Warning" warning="Be careful!">
-    <Input/>
+    <Select/>
 </Field>
 
 <Field label="Success" success="Ready!">
@@ -83,7 +83,7 @@ Place multiple inputs and buttons in one row. Also you can remove gap with `gapl
 
 ```htm example
 <script>
-    import {Field,Input,Button} from 'malina-ui';
+    import {Field,Input,Select,Button} from 'malina-ui';
     import {searchIcon} from '@icons';
 </script>
 
@@ -101,6 +101,7 @@ Place multiple inputs and buttons in one row. Also you can remove gap with `gapl
     <Button hard><b>B</b></Button>
     <Button hard><i>I</i></Button>
     <Button hard><u>U</u></Button>
+    <Select options={['Times New Roman','Arial']}/>
     <Input/>
 </Field>
 ```

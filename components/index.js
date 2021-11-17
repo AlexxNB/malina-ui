@@ -4,6 +4,7 @@ export {default as MalinaUI} from './MalinaUI.xht';
 // Form
 export {default as Button} from './Form/Button.xht';
 export {default as Input} from './Form/Input.xht';
+export {default as Select} from './Form/Select.xht';
 export {default as Field} from './Form/Field.xht';
 export {default as Checkbox} from './Form/Checkbox.xht';
 export {default as Switch} from './Form/Switch.xht';

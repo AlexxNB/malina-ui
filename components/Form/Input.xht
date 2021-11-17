@@ -9,8 +9,6 @@
     export let password = false;
     export let textarea = false;
     export let number = false;
-    export let select = false;
-    export let multiple = false;
 
     // Value
     export let value = '';
@@ -42,14 +40,13 @@
         loading=state.$=='loading';
     }
 
-
     // Util
     $: inpType = type || choose(
-        ['password','textarea','number','select','multiple'],
-        [ password,  textarea,  number, select, multiple],
+        ['password','textarea','number'],
+        [ password,  textarea,  number],
       'text');
 
-    $: value,() => value=handleValue(value,inpType);
+    $: value,() => value=handleValue(value);
 
     $: stateClasses = choose(
         ['bd-error txt-error','bd-success txt-success','bd-warning txt-warning'],
@@ -60,6 +57,7 @@
 {#fragment:input}
     {#if inpType == 'textarea'}
         <textarea 
+            size="3"
             class="radius {stateClasses} $main" 
             class:loading
             class:iconLP={icon}
@@ -71,12 +69,10 @@
             ^ @@
         />
     {:else}
-        {#if inpType == 'select' || inpType == 'multiple'}
+        {#if inpType == 'select'}
             <select 
                 class="radius {stateClasses} $main"
-                multiple={inpType == 'multiple' || undefined}
-                class:small={small && !multiple}
-                class:multiple={!!multiple}
+                class:small={small}
                 class:loading
                 class:iconLP={icon}
                 class:iconRP={loading || iconRight}
@@ -105,7 +101,7 @@
 {/fragment}
 
 {#if !icon && !iconRight && !loading}
-    <fragment:input/>
+    <fragment:input @@/>
 {:else}
     <div class="input-has-icon $iconWrapper" class:infield={state} ^iconWrapper>
 
@@ -115,7 +111,7 @@
         {/if}
         </div>
 
-        <fragment:input/>
+        <fragment:input @@/>
 
         <div class="icon-right $iconRight" ^iconRight>
         {#if loading}
@@ -137,10 +133,6 @@
         outline: 0;
         transition: .25s;
         background-color: var(--color-bg);
-    }
-
-    textarea, .multiple{
-        height: 8rem;
     }
 
     input:focus, textarea:focus,select:focus{
@@ -195,6 +187,7 @@
         right: .3em;
         height: 100%;
         top:0px;
+        pointer-events: none;
     }
 
     .icon-left{
@@ -204,6 +197,7 @@
         left: .3em;
         top:0px;
         height: 100%;
+        pointer-events: none;
     }
 
     .iconLP{padding-left: 3.6rem;}

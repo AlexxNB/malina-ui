@@ -56,9 +56,7 @@ export default {
             ['password',"Make input of type password",'boolean',false],
             ['textarea',"Make input of type textarea",'boolean',false],
             ['number',"Make input of type number",'boolean',false],
-            ['select',"Make input of type select",'boolean',false],
-            ['multiple',"Make input of type select with multiple choice",'boolean',false],
-            ['small',"Make smaller input (not work with textarea and multiple types)",'boolean',false],
+            ['small',"Make smaller input (not work with textarea)",'boolean',false],
             ['error',"Error state for input",'boolean',false],
             ['warning',"Warning state for input",'boolean',false],
             ['success',"Success state for input",'boolean',false],
@@ -73,6 +71,26 @@ export default {
             ['^iconWrapper','<div> element which is wraped around input and icons.'],
             ['^iconLeft','<div> element for left icon'],
             ['^iconRight','<div> element for right icon (includes also a spinner for loading state)'],
+        ]
+
+    },
+
+    //Select.xht
+    select:{
+
+        props: [
+            ['value',"Value of the selected option",'any',''],
+            ['small',"Make smaller select",'boolean',false],
+            ['error',"Error state for select",'boolean',false],
+            ['warning',"Warning state for select",'boolean',false],
+            ['success',"Success state for select",'boolean',false],
+            ['disabled',"Disabled state for select",'boolean',false],
+            ['loading',"Loading state for select. You may pass valid icon source instead default spinner.",'boolean|string',false],
+            ['icon',"Source for icon on the left side",'string',false],
+        ],
+
+        anchors:[
+            ['^','<select> element']
         ]
 
     },
