@@ -1,6 +1,6 @@
 {
   "name": "malina-ui",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "UI kit for malina.js framework",
   "main": "components/index.js",
   "malina": "components/index.js",
