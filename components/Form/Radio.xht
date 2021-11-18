@@ -1,7 +1,7 @@
 <script>
     import {Icon} from './../index';
     import {circle,spinner} from './../../icons';
-    import {choose,isSlot} from '../../lib/utils';
+    import {isSlot} from '../../lib/utils';
 
     export let checked = false;
     export let value = false;
@@ -21,11 +21,6 @@
     $: group,()=>{
         checked = group === value;
     }
-
-    $: stateClasses = choose(
-        ['bd-error txt-error','bd-success txt-success','bd-warning txt-warning'],
-        [ error,  success,  warning],
-      'bd-neutral txt-primary');
 </script>
 
 <label ^label class="$label" class:loading class:disabled>
@@ -37,7 +32,12 @@
         {...$attributes}
         :checked={checked}  
     @@ ^/>
-    <div class="{stateClasses} $radio" ^radio>
+    <div 
+        class="$radio" 
+        class:error
+        class:warning
+        class:success
+    ^radio>
         <span>
             {#if loading}
                 <Icon src={spinner} size="1.8rem" spin="0.5"/>
@@ -61,7 +61,7 @@
     input+div {
         user-select: none;
         display: inline-block;
-        border-width: 1px;
+        border: 1px solid var(--color-neutral);
         background-color: var(--color-bg);
         width: 2rem;
         height: 2rem;
@@ -69,7 +69,9 @@
         margin-bottom: .2rem;
         margin-right: .2rem;
         vertical-align: middle;
+         color: var(--color-primary);
     }
+
     input+div span{
         display: block;
         line-height: .5rem;
@@ -83,21 +85,27 @@
         opacity: 1;
     }
 
-    input:focus+div{
-        border-color: var(--color-primary);
-        box-shadow: var(--input-shadow-primary);
-    }
-
-    input:focus+div.bd-error{
+    input+div.error{
+        color: var(--color-error);
+        border-color: var(--color-error);
         box-shadow: var(--input-shadow-error);
     }
 
-    input:focus+div.bd-success{
+    input+div.success{
+        color: var(--color-success);
+        border-color: var(--color-success);
         box-shadow: var(--input-shadow-success);
     }
 
-    input:focus+div.bd-warning{
+    input+div.warning{
+        color: var(--color-warning);
+        border-color: var(--color-warning);
         box-shadow: var(--input-shadow-warning);
+    }
+
+    input:focus+div{
+        border-color: var(--color-primary);
+        box-shadow: var(--input-shadow-primary);
     }
 
     .loading {

@@ -1,7 +1,7 @@
 <script>
     import {Icon} from './../index';
     import {circle,spinner} from './../../icons';
-    import {choose,isSlot} from '../../lib/utils';
+    import {isSlot} from '../../lib/utils';
 
     export let checked = false;
     export let value = false;
@@ -22,11 +22,6 @@
     $: group,()=>{
         if(!group.includes(value)) checked=false;
     }
-
-    $: stateClasses = choose(
-        ['bd-error bg-neutral','bd-success bg-neutral','bd-warning bg-neutral'],
-        [ error,  success,  warning],
-      'bd-neutral bg-neutral');
 </script>
 
 <label ^label class="$label" class:loading class:disabled>
@@ -38,7 +33,12 @@
         {...$attributes}
         :checked={checked}  
     @@ ^/>
-    <div class="{stateClasses} $switch" ^switch>
+    <div 
+        class="$switch" 
+        class:error
+        class:warning
+        class:success
+    ^switch>
         <span>
             {#if loading}
                 <Icon src={spinner} size="1.8rem" spin="0.5"/>
@@ -62,7 +62,8 @@
     input+div {
         user-select: none;
         display: inline-block;
-        border-width: 1px;
+        border: 1px solid var(--color-neutral);
+        background-color: var(--color-neutral);
         width: 3.5rem;
         height: 2rem;
         border-radius: 1rem;
@@ -90,35 +91,45 @@
     }
 
 
-     input:checked+div.bd-error{
+    input+div.error{
         border-color: var(--color-error);
+    }
+
+    input+div.success{
+        border-color: var(--color-success);
+    }
+
+    input+div.warning{
+        border-color: var(--color-warning);
+    }
+
+    input:checked+div.error{
         background-color: var(--color-error);
     }
 
-    input:checked+div.bd-success{
-        border-color: var(--color-success);
+    input:checked+div.success{
         background-color: var(--color-success);
     }
 
-    input:checked+div.bd-warning{
-        border-color: var(--color-warning);
+    input:checked+div.warning{
         background-color: var(--color-warning);
     }
+    
 
     input:focus+div{
         border-color: var(--color-primary) !important;
         box-shadow: var(--input-shadow-primary);
     }
 
-    input:focus+div.bd-error{
+    input:focus+div.error{
         box-shadow: var(--input-shadow-error);
     }
 
-    input:focus+div.bd-success{
+    input:focus+div.success{
         box-shadow: var(--input-shadow-success);
     }
 
-    input:focus+div.bd-warning{
+    input:focus+div.warning{
         box-shadow: var(--input-shadow-warning);
     }
 

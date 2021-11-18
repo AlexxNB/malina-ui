@@ -78,10 +78,10 @@
         line-height: .5rem;
         padding: 0;
         opacity: 0;
-        transition: opacity .25s, border-background .25s, border-color .25s;
+        transition: opacity .25s, border-color .25s;
         border:1px solid var(--color-bg);
         border-radius: .3rem;
-        color: var(--color-bg)
+        color: var(--color-primary);
     }
 
     input:checked+div span,.loading input+div span{
@@ -89,6 +89,7 @@
         opacity: 1;
     }
 
+    input:checked+div span{color:var(--color-bg)}
     input:checked+div span{background-color:var(--color-primary)}
     input:checked+div.error span{background-color:var(--color-error)}
     input:checked+div.warning span{background-color:var(--color-warning)}
