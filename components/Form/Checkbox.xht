@@ -1,7 +1,7 @@
 <script>
     import {Icon} from './../index';
     import {check,spinner} from './../../icons';
-    import {choose,isSlot} from '../../lib/utils';
+    import {isSlot} from '../../lib/utils';
 
     export let checked = false;
     export let value = false;
@@ -22,11 +22,6 @@
     $: group,()=>{
         if(!group.includes(value)) checked=false;
     }
-
-    $: stateClasses = choose(
-        ['bd-error txt-error','bd-success txt-success','bd-warning txt-warning'],
-        [ error,  success,  warning],
-      'bd-neutral txt-primary');
 </script>
 
 <label ^label class="$label" class:loading class:disabled>
@@ -38,12 +33,18 @@
         {...$attributes}
         :checked={checked}  
     @@ ^/>
-    <div class="{stateClasses} $checkbox" ^checkbox>
+    <div 
+        class="$checkbox" 
+        ^checkbox
+        class:error
+        class:warning
+        class:success
+    >
         <span>
             {#if loading}
-                <Icon src={spinner} size="1.8rem" spin="0.5"/>
+                <Icon src={spinner} size="1.6rem" spin="0.5"/>
             {:else}
-                <Icon src={check} size="1.8rem"/>
+                <Icon src={check} size="1.6rem"/>
             {/if}
         </span>
     </div>
@@ -62,8 +63,7 @@
     input+div {
         user-select: none;
         display: inline-block;
-        border-width: 1px;
-        background-color: var(--color-bg);
+        border: 1px solid var(--color-neutral);
         width: 2rem;
         height: 2rem;
         border-radius: .3rem;
@@ -71,34 +71,47 @@
         margin-right: .2rem;
         vertical-align: middle;
     }
+
     input+div span{
         display: block;
+        max-height: 2rem;
         line-height: .5rem;
+        padding: 0;
         opacity: 0;
-        transition: opacity .25s, border-color .25s;
+        transition: opacity .25s, border-background .25s, border-color .25s;
+        border:1px solid var(--color-bg);
+        border-radius: .3rem;
+        color: var(--color-bg)
     }
 
     input:checked+div span,.loading input+div span{
         display: block;
-        line-height: .5rem;
         opacity: 1;
+    }
+
+    input:checked+div span{background-color:var(--color-primary)}
+    input:checked+div.error span{background-color:var(--color-error)}
+    input:checked+div.warning span{background-color:var(--color-warning)}
+    input:checked+div.success span{background-color:var(--color-success)}
+
+    input+div.error{
+        border-color: var(--color-error);
+        box-shadow: var(--input-shadow-error);
+    }
+
+    input+div.success{
+        border-color: var(--color-success);
+        box-shadow: var(--input-shadow-success);
+    }
+
+    input+div.warning{
+        border-color: var(--color-warning);
+        box-shadow: var(--input-shadow-warning);
     }
 
     input:focus+div{
         border-color: var(--color-primary);
         box-shadow: var(--input-shadow-primary);
-    }
-
-    input:focus+div.bd-error{
-        box-shadow: var(--input-shadow-error);
-    }
-
-    input:focus+div.bd-success{
-        box-shadow: var(--input-shadow-success);
-    }
-
-    input:focus+div.bd-warning{
-        box-shadow: var(--input-shadow-warning);
     }
 
     .loading {
