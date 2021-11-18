@@ -8,7 +8,7 @@ Input component
 
 #### Types
 
-There several builtin input types `text`(default), `password`, `number`, `textarea` and `select`, `multiple`. 
+There several builtin input types `text`(default), `password`, `number` and `textarea`. 
 
 ```htm example
 <script>
@@ -19,35 +19,11 @@ There several builtin input types `text`(default), `password`, `number`, `textar
 <p><Input password placeholder="Password"/></p>
 <p><Input number /></p>
 <p><Input textarea placeholder="Textarea"/></p>
-<p>
-    <Input select>
-        <option value="1">Apple</option>
-        <option value="2">Orange</option>
-        <option value="3">Grapes</option>
-    </Input>
-</p>
-<p>
-    <Input multiple>
-        <option value="1">Apple</option>
-        <option value="2">Orange</option>
-        <option value="3">Grapes</option>
-    </Input>
-</p>
 ```code
 <Input placeholder="Text"/>
 <Input password placeholder="Password"/>
 <Input number/>
 <Input textarea placeholder="Textarea"/>  
-<Input select>
-    <option value="1">Apple</option>
-    <option value="2">Orange</option>
-    <option value="3">Grapes</option>
-</Input>
-<Input multiple>
-    <option value="1">Apple</option>
-    <option value="2">Orange</option>
-    <option value="3">Grapes</option>
-</Input>
 ```
 
 Also you can specify any valid input type using `type` attribute.
