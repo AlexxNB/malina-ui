@@ -40,17 +40,6 @@
     $: typeClasses = getClasses(outline,clear,btnStyle);
 </script>
 
-<button
-  class={`radius ${typeClasses} $main`}
-  class:small
-  class:loading
-  class:iconOnly
-  class:infield={state}
-  {...$attributes}
-  @@ 
-  ^
->
-
 {#fragment:content}
   {#if icon || iconRight}
     {#if icon}<span class="{iconOnly ? "ico" : "ico-l"} $iconLeft" ^iconLeft><Icon src={icon}/></span>{/if}
@@ -62,6 +51,17 @@
     <slot/>
   {/if}
 {/fragment}
+
+<button
+  class={`radius ${typeClasses} $main`}
+  class:small
+  class:loading
+  class:iconOnly
+  class:infield={state}
+  {...$attributes}
+  @@ 
+  ^
+>
 
 {#if loading}
   <span class="txt-transparent"><fragment:content><slot/></fragment></span>
@@ -89,7 +89,9 @@
     opacity: .7;
   }
 
-
+  button:active{
+    opacity: .85;
+  }
   .small{
     padding: 0 1rem;
     height: 3rem;
