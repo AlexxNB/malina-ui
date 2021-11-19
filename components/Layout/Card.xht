@@ -1,0 +1,32 @@
+<script>
+    import {isSlot} from './../../lib/utils';
+
+    export let header = false;
+</script>
+
+<div class="card $main" ^ @@>
+{#if isSlot($option,'header')}
+    <div class="header $header" ^header><slot:header/></div>
+{:else}
+    {#if header}<div class="header $header" ^header><h4>{header}</h4></div>{/if}
+{/if}
+
+<slot/>
+
+{#if isSlot($option,'footer')}
+    <div class="footer $footer" ^footer><slot:footer/></div>
+{/if}
+</div>
+
+<style>
+    .card{
+        box-shadow: var(--box-shadow);
+        border-radius: var(--radius);
+        padding: 2rem;
+    }
+
+    .footer{
+        margin-top: 2rem;
+        text-align:right;
+    }
+</style>

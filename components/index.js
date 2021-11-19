@@ -16,6 +16,7 @@ export {default as Col} from './Layout/Col.xht';
 export {default as Row} from './Layout/Row.xht';
 export {default as Navbar} from './Layout/Navbar.xht';
 export {default as Sidebar} from './Layout/Sidebar.xht';
+export {default as Card} from './Layout/Card.xht';
 
 // Other
 export {default as Icon} from './Other/Icon.xht';

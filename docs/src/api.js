@@ -271,4 +271,24 @@ export default {
 
     },
 
+    //Card.xht
+    card:{
+        props: [
+            ['header',"Card header(if slot:header not present)",'string',false],
+        ],
+
+        anchors:[
+            ['^','<div> element of card'],
+            ['^header','<div> element of header'],
+            ['^footer','<div> element of footer'],
+        ],
+
+        slots:[
+            ['default','Card content'],
+            ['header','Card header'],
+            ['footer','Card footer'],
+        ],
+
+    },
+
 }

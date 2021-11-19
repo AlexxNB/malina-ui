@@ -17,6 +17,7 @@ import Row from '@pages/Row.md';
 import Col from '@pages/Col.md';
 import Navbar from '@pages/Navbar.md';
 import Sidebar from '@pages/Sidebar.md';
+import Card from '@pages/Card.md';
 
 export default {
 
@@ -69,6 +70,11 @@ export default {
                 title: 'Sidebar',
                 component: Sidebar,
                 api: api.sidebar
+            },
+            card:{
+                title: 'Card',
+                component: Card,
+                api: api.card
             },
         }
     },
