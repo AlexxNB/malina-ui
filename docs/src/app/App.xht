@@ -1,5 +1,5 @@
 <script>
-    import {MalinaUI,Container,Row,Col,Navbar,Sidebar,Button,screen} from 'malina-ui';
+    import {MalinaUI,Container,Row,Col,Navbar,Sidebar,Button,screen,Tablist,Tab} from 'malina-ui';
     import {menuIcon} from '@icons';
     import Menu from '@app/Menu.xht';
     import Api from '@app/Api.xht';
@@ -45,13 +45,19 @@
         <Col size=9 s=12>
             {#if page}
                 {#if !screen.$.s}
-                    {#if page.api}
-                        <div class="tabs">
-                            <button class:active={!showApi} @click={showApi=false}>Showcase</button>
-                            <button class:active={showApi} @click={showApi=true}>API</button>
-                        </div>
-                    {/if}
-                    <h2>{page.title}</h2>
+                    <Row>
+                        <Col>
+                            <h2>{page.title}</h2>
+                        </Col>
+                        {#if page.api}
+                        <Col>
+                            <Tablist bind:value={showApi} class="tabs">
+                                <Tab name={false}>Showcase</Tab>
+                                <Tab name={true}>API</Tab>
+                            </Tablist>
+                        </Col>
+                        {/if}
+                    </Row>
                 {/if}
                 {#if showApi}
                     <Api api={page.api}/>
@@ -66,7 +72,7 @@
 
 <style>
     .tabs{
-        float: right;
+        justify-content: end;
     }
 
     .active{

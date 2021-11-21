@@ -1,20 +1,22 @@
 <script>
-    export let name = false;
-
+    export let name = undefined;
+    
 
     let tablist;
     $onDestroy( $context.tablist.subscribe(v => tablist=v) );
     let id = $context.tablist.$.count++;
+
+    $: value = name === undefined ? id : name;
     
-    $: selected = tablist.current ==  (name || id);
+    $: selected = tablist.current == value;
     function setSelected(e){
-        $context.tablist.$.current = (name || id)
+        $context.tablist.$.current = value;
     }
 </script>
 
 <li 
     role="tab" 
-    class="main"
+    class="$main"
     @click={setSelected} 
     @keydown|space|prevent={setSelected} 
     @keydown|enter|prevent={setSelected} 

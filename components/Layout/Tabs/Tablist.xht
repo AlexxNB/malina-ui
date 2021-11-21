@@ -13,9 +13,10 @@
 
     $context.tablist = tablist;
     
+    $: value, ()=>tablist.$.current=value;
 </script>
 
-<ul role="tablist $main" class:full ^ @@><slot/></ul>
+<ul role="tablist" class=" $main" class:full ^ @@><slot/></ul>
 
 <style>
     ul{
