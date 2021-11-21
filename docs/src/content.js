@@ -18,6 +18,9 @@ import Col from '@pages/Col.md';
 import Navbar from '@pages/Navbar.md';
 import Sidebar from '@pages/Sidebar.md';
 import Card from '@pages/Card.md';
+import Tabs from '@pages/Tabs.md';
+import Tablist from '@pages/Tablist.md';
+import Tab from '@pages/Tab.md';
 
 export default {
 
@@ -75,6 +78,22 @@ export default {
                 title: 'Card',
                 component: Card,
                 api: api.card
+            },
+            tabs:{
+                title: 'Tabs',
+                component: Tabs,
+                sub:{
+                    tablist:{
+                        title: 'Tablist',
+                        component: Tablist,
+                        api: api.tablist
+                    },
+                    tab:{
+                        title: 'Tab',
+                        component: Tab,
+                        api: api.tab
+                    }
+                }
             },
         }
     },

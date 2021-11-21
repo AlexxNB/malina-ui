@@ -1,0 +1,31 @@
+<script>
+    import {store} from 'storxy';
+
+    export let full = false;
+    export let value = 0;
+
+    const tablist = store({
+        count:0,
+        current: value
+    });
+
+    $onDestroy( tablist.subscribe(v => value=v.current) );
+
+    $context.tablist = tablist;
+    
+</script>
+
+<ul role="tablist $main" class:full ^ @@><slot/></ul>
+
+<style>
+    ul{
+        display:flex;
+        margin:0 0 1.5rem 0;
+        padding: 0;
+        flex-flow: row wrap;
+    }
+
+    .full :global(li){
+        flex: 10rem;
+    }
+</style>

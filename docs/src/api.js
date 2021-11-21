@@ -291,4 +291,34 @@ export default {
 
     },
 
+    //Tablist.xht
+    tablist:{
+        props: [
+            ['value',"Current selected tab (id or name)",'number|string',0],
+        ],
+
+        anchors:[
+            ['^','<ul> element of tablist (100% width block)'],
+        ],
+
+        slots:[
+            ['default','Place only <Tab> components here'],
+        ],
+    },
+
+    //Tab.xht
+    tab:{
+        props: [
+            ['name',"Name which will be returned instead tab id",'string',false],
+        ],
+
+        anchors:[
+            ['^','<li> element of tablist (inline-block)'],
+        ],
+
+        slots:[
+            ['default','Content of the tab'],
+        ],
+    },
+
 }

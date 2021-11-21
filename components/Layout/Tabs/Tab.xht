@@ -1,0 +1,43 @@
+<script>
+    export let name = false;
+
+
+    let tablist;
+    $onDestroy( $context.tablist.subscribe(v => tablist=v) );
+    let id = $context.tablist.$.count++;
+    
+    $: selected = tablist.current ==  (name || id);
+    function setSelected(e){
+        $context.tablist.$.current = (name || id)
+    }
+</script>
+
+<li 
+    role="tab" 
+    class="main"
+    @click={setSelected} 
+    @keydown|space|prevent={setSelected} 
+    @keydown|enter|prevent={setSelected} 
+    class:selected 
+    tabindex="0"
+    ^ @@
+    ><slot/></li>
+<style>
+    li{
+        display: inline-block;
+        padding: .5rem 2rem 1.5rem;
+        flex-basis: 10rem;
+        white-space: nowrap;
+        border-bottom: 2px solid var(--color-neutral);
+        cursor: pointer;
+        text-align: center;
+    }
+
+    li:hover,li:focus{
+        border-color: var(--color-hard);
+    }
+
+    .selected,.selected:focus{
+        border-color:var(--color-primary);
+    }
+</style>
