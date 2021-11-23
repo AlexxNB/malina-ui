@@ -11,23 +11,26 @@ Icon component
 You can place icon by three ways. The `src` attribute can accept:
 
 * SVG-path. Many icon libs are provide this. Prefered.
+* [IconifyIcon object](https://docs.iconify.design/sources/npm/). Find any from [thousands icons](https://icon-sets.iconify.design).
 * URL of image file.
 * URL of svg-sprites file with symbol name.
 
 ```htm example
 <script>
     import {Icon} from 'malina-ui';
-    import {jsIcon,crossIcon,triangleIcon} from '@icons';
+    import {jsIcon,crossIcon,triangleIcon,homeIcon} from '@icons';
 </script>
 
 <Icon src={crossIcon} />
 <Icon src="./malinajs.svg" />
 <Icon src={jsIcon} />
-<Icon src={triangleIcon} />
+<Icon src={triangleIcon}/>
+<Icon src={homeIcon}/>
 ```code
 <script>
   import {Icon} from 'malina-ui'; 
   import {mdiClose} from '@mdi/js'; 
+  import homeIcon from '@iconify-icons/flat-color-icons/home'; 
   const triangleIcon = "M12,2L1,21H23M12,6L19.53,19H4.47";
 </script>
 
@@ -35,6 +38,7 @@ You can place icon by three ways. The `src` attribute can accept:
 <Icon src="./malinajs.svg" />
 <Icon src="./mysprites.svg#jsicon" />
 <Icon src={triangleIcon} />
+<Icon src={homeIcon} />
 ```
 
 #### Size

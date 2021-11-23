@@ -13,17 +13,24 @@
 
     export let viewbox = '0 0 24 24';
 
-    // Temporary fix
-    $attributes;
-
     //Source type
 	$: type = resolveSource(src);
     // Computed styles
 	$: styles = getStyles(size,color,flipV,flipH,rotate);
     // Spin params
 	$: sPrm = getSpin(spin);
+
+    //Set viewbox
+    $: type,()=>{
+        if(type=='iconify' && src.width && src.height) viewbox=`0 0 ${src.width} ${src.height}`;
+    }
     
 </script>
+
+{#fragment:svg}
+    {#if type=='path'}<path d={src}></path>{/if}
+    {#if type=='iconify'}{@html src.body}{/if}
+{/fragment}
 
 {#if type == 'image'}
 	<span {...$attributes} class="$main" style={styles} @@ ^>
@@ -38,10 +45,10 @@
         <svg viewBox={viewbox} {...$attributes} class="$main" style={styles} @@ ^>
         {#if spin !== false}
             <g class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style}>
-                <path d={src}></path>
+                <fragment:svg/>
             </g>
         {:else}
-            <path d={src}></path>
+            <fragment:svg/>
         {/if}
         </svg>
     {/if}
