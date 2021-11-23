@@ -1,8 +1,6 @@
 <script>
-    import {motion}  from 'storxy';
-    import {getStyle} from './../../lib/sidebar';
-
     import Overlay from './../Utils/Overlay.xht';
+    import Delayed from './../Utils/Delayed.xht';
 
     export let open = false;
     export let size = 30;
@@ -12,34 +10,26 @@
     export let top = false;
     export let right = false;
     export let bottom = false;
-
     $: left = !right && !top && !bottom;
-    $: nSize = Number(size);
 
-    //Animation
-    const kSize = motion(0);
-    $runtime.autoSubscribe(kSize);
-
-    $: open,()=>{kSize.$ = open ? nSize : 0};
-    $: style = getStyle(left,right,top,bottom,nSize,kSize.$);
 </script>
-
-{#if kSize.$ !== 0}
-    <Overlay {open} @click={autoclose && (open=false)} class="$overlay"/>
-    <div class="sidebar $main"
-        {style}
+<Overlay {open} @click={autoclose && (open=false)} class="$overlay"/>
+<Delayed show={open}>
+    <div class="sidebar animated $main"
+        style="--size:{Number(size) ? `${size}rem` : size}"
         class:left
         class:right
         class:top
         class:bottom
         class:vertical={right || left}
         class:horizont={top || bottom}
+        class:slideOut={!open}
         @click={autoclose && (open=false)}
         {...$attributes}
         @@
         ^
     ><slot/></div>
-{/if}
+</Delayed>
 
 <style>
     div{
@@ -47,20 +37,33 @@
         z-index:2;
         background-color: var(--color-soft);
         overflow:auto;
+        animation-name: slideIn;
     }
 
     .vertical{
         top: 0;
         bottom:0;
+        width: var(--size);
     }
 
     .horizont{
         left: 0;
         right:0;
+        height: var(--size);
     }
 
-    .left{left:0}
-    .right{right:0}
-    .top{top:0}
-    .bottom{bottom:0}
+    .left{ left:0; margin-left: calc(-1*var(--size)) }
+    .right{ right:0; margin-right: calc(-1*var(--size)) }
+    .top{ top:0; margin-top: calc(-1*var(--size)) }
+    .bottom{ bottom:0; margin-bottom: calc(-1*var(--size)) }
+
+    @keyframes slideIn {
+        to { margin: 0 }
+    }
+
+    @keyframes slideOut {
+        from { margin: 0 }
+    }
+    
+    .slideOut{animation-name: slideOut;}
 </style>

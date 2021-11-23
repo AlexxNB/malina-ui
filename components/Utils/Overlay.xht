@@ -1,18 +1,16 @@
 <script>
-    import {motion}  from 'storxy';
+    import Delayed from './Delayed.xht';
+
     export let open = false;
-    export let opacity = 0.8;
-
-    //Animation
-    const kOpacity = motion(0);
-    $runtime.autoSubscribe(kOpacity);
-
-    $: open,()=>{kOpacity.$ = open ? opacity : 0};
 </script>
 
-{#if kOpacity.$}
-    <div class="$main" @@ ^ style={`opacity: ${kOpacity.$}`}></div>
-{/if}
+<Delayed show={open}>
+    <div 
+        class="animated $main"
+        class:fadeIn={open}
+        class:fadeOut={!open}
+     @@ ^></div>
+</Delayed>
 
 <style>
     div{
@@ -23,5 +21,6 @@
         right:0;
         bottom:0;
         background-color: var(--color-bg);
+        opacity: .8;
     }
 </style>

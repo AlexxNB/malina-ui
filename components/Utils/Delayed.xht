@@ -1,0 +1,23 @@
+<script>
+    export let show = true;
+    export let delayIn = 0;
+    export let delayOut = 350;
+
+    let isShowing = show;
+    let timer;
+
+    function setDelayed(state){
+        state = !!state;
+        clearTimeout(timer);
+        if( (state && delayIn === 0) || (!state && delayOut === 0) ) 
+            isShowing=state;
+        else
+            timer = setTimeout(()=>{
+                isShowing=state
+            }, state ? delayIn : delayOut)
+    }
+
+    $: show,()=>setDelayed(show);
+</script>
+
+{#if isShowing}<slot/>{/if}
