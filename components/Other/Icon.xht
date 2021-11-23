@@ -39,7 +39,7 @@
 {:else} 
     {#if type == 'sprite'}
         <svg viewBox={viewbox} {...$attributes} class="$main" style={styles} @@ ^>
-            <use xlink:href={src} class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style}></use>
+            <use href={src} class:spinCW={sPrm.CW} class:spinCCW={sPrm.CCW} style={sPrm.style}></use>
         </svg>
     {:else}
         <svg viewBox={viewbox} {...$attributes} class="$main" style={styles} @@ ^>

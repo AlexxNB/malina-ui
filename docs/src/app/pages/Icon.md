@@ -23,7 +23,7 @@ You can place icon by three ways. The `src` attribute can accept:
 
 <Icon src={crossIcon} />
 <Icon src="./malinajs.svg" />
-<Icon src={jsIcon} />
+<Icon src="./sprite.svg#javascript" />
 <Icon src={triangleIcon}/>
 <Icon src={homeIcon}/>
 ```code
@@ -36,7 +36,7 @@ You can place icon by three ways. The `src` attribute can accept:
 
 <Icon src={mdiClose} />
 <Icon src="./malinajs.svg" />
-<Icon src="./mysprites.svg#jsicon" />
+<Icon src="./sprite.svg#javascript" />
 <Icon src={triangleIcon} />
 <Icon src={homeIcon} />
 ```
