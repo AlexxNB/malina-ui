@@ -5,7 +5,7 @@
 
     export let open = false;
     export let size = 30;
-    export let autoclose = true;
+    export let closable = true;
 
     //Size
     $: cssSize = Number(size) ? `${size}rem` : size;
@@ -32,7 +32,7 @@
 
     $: open, ()=>aSlide && aSlide.reverse()
 </script>
-<Overlay {open} @click={autoclose && (open=false)} class="$overlay"/>
+<Overlay {open} @click={closable && (open=false)} class="$overlay"/>
 <Delayed show={open}>
     <div class="sidebar $main"
         *action
@@ -42,7 +42,7 @@
         class:bottom
         class:vertical={right || left}
         class:horizont={top || bottom}
-        @click={autoclose && (open=false)}
+        @click={closable && (open=false)}
         {...$attributes}
         @@
         ^

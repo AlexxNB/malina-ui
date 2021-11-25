@@ -257,7 +257,7 @@ export default {
             ['top',"Show sidebar at the top",'boolean',false],
             ['bottom',"Show sidebar at the bottom",'boolean',false],
             ['right',"Show sidebar at the right",'boolean',false],
-            ['autoclose',"Close sidebar when click on it or overlay",'boolean',true],
+            ['closable',"Allows close sidebar when click on it or overlay",'boolean',true],
         ],
 
         anchors:[

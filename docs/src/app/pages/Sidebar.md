@@ -17,8 +17,8 @@ You should bind to `open` property and set it `true` when need to show sidebar.
     let open = false;
 </script>
 
-<Sidebar :open={open}>Hello!</Sidebar>
-<Button @click={open=!open}>Show sidebar</Button>
+<Sidebar :open>Hello!</Sidebar>
+<Button @click={open=true}>Show sidebar</Button>
 ```
 
 #### Position
@@ -40,10 +40,10 @@ By default sidebar will be shown along a left edge. You can set other sides with
 <Sidebar :open={openBottom} bottom>Bottom</Sidebar>
 
 <p>Toggle sidebars:</p>
-<Button @click={open=!open}>Left</Button>
-<Button @click={openRight=!openRight}>Right</Button>
-<Button @click={openTop=!openTop}>Top</Button>
-<Button @click={openBottom=!openBottom}>Bottom</Button>
+<Button @click={open=true}>Left</Button>
+<Button @click={openRight=true}>Right</Button>
+<Button @click={openTop=true}>Top</Button>
+<Button @click={openBottom=true}>Bottom</Button>
 ```
 
 #### Size
@@ -63,13 +63,13 @@ To change default width(or height for `top` and `bottom`) of sidebar use the `si
 <Sidebar :open={open3}  size="50">The biggest!</Sidebar>
 
 <p>Toggle sidebars:</p>
-<Button @click={open=!open} success>Small</Button>
-<Button @click={open2=!open2} warning>Bigger</Button>
-<Button @click={open3=!open3} error>The biggest</Button>
+<Button @click={open=true} success>Small</Button>
+<Button @click={open2=true} warning>Bigger</Button>
+<Button @click={open3=true} error>The biggest</Button>
 ```
 ### Autoclose
 
-You can close sidebar when do click on overlay or sidebar. To prevent this set property `autoclose` to `false` value:
+You can close sidebar when do click on overlay or sidebar itself. To prevent this set property `closable` to `false` value:
 
 ```htm example
 <script>
@@ -77,9 +77,9 @@ You can close sidebar when do click on overlay or sidebar. To prevent this set p
     let open = false;
 </script>
 
-<Sidebar {open} autoclose={false}>
+<Sidebar {open} closable={false}>
     <Button @click={open=false}>Close sidebar</Button>
 </Sidebar>
 
-<Button @click={open=!open}>Open sidebar</Button>
+<Button @click={open=true}>Open sidebar</Button>
 ```
