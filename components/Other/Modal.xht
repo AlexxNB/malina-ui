@@ -5,6 +5,7 @@
     import Button from './../Form/Button.xht';
     import {close} from './../../icons';
     import {createAnimation} from '../../lib/animation';
+    import {focusTrap} from '../../lib/utils';
 
     export let header = false;
     export let closable = true;
@@ -14,16 +15,18 @@
         {opacity:0,transform: 'translateY(3rem)'},
         {opacity:1},
     ],{duration:150});
+
+    const closeModal = ()=>closable && (open=false);
     
     $: open,()=>aFly.reverse();
 </script>
 
 <Overlay {open} class="$overlay"/>
 <Delayed show={open} delayOut="150">
-    <div class="wrapper" @click={closable && (open=false)}>
-        <div class="modal" @click={$event.stopPropagation()} *aFly.action>
+    <div class="wrapper" @click={closeModal} @keydown|esc={closeModal}>
+        <div class="modal" @click={$event.stopPropagation()} *aFly.action *focusTrap>
             {#if closable}
-                <div class="close"><Button clear icon={close} @click={open=false}/></div>
+                <div class="close"><Button clear icon={close} @click={open=false} aria-label="Close"/></div>
             {/if}
             <Card 
                 {header} 

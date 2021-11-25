@@ -2,6 +2,7 @@
     import Overlay from './../Utils/Overlay.xht';
     import Delayed from './../Utils/Delayed.xht';
     import {createAnimation} from '../../lib/animation';
+    import {focusTrap} from '../../lib/utils';
 
     export let open = false;
     export let size = 30;
@@ -30,19 +31,22 @@
         return aSlide.action(el);
     }
 
+    const closeSidebar = ()=>closable && (open=false);
+
     $: open, ()=>aSlide && aSlide.reverse()
 </script>
-<Overlay {open} @click={closable && (open=false)} class="$overlay"/>
-<Delayed show={open}>
+<Overlay {open} @click={closeSidebar} class="$overlay"/>
+<Delayed show={open} >
     <div class="sidebar $main"
         *action
+        *focusTrap
         class:left
         class:right
         class:top
         class:bottom
         class:vertical={right || left}
         class:horizont={top || bottom}
-        @click={closable && (open=false)}
+        @click={closeSidebar}
         {...$attributes}
         @@
         ^
