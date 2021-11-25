@@ -1,0 +1,69 @@
+<script>
+    import Overlay from './../Utils/Overlay.xht';
+    import Delayed from './../Utils/Delayed.xht';
+    import Card from './../Layout/Card.xht';
+    import Button from './../Form/Button.xht';
+    import {close} from './../../icons';
+    import {createAnimation} from '../../lib/animation';
+
+    export let header = false;
+    export let closable = true;
+    export let open = false;
+
+    const aFly = createAnimation([
+        {opacity:0,transform: 'translateY(3rem)'},
+        {opacity:1},
+    ],{duration:150});
+    
+    $: open,()=>aFly.reverse();
+</script>
+
+<Overlay {open} class="$overlay"/>
+<Delayed show={open} delayOut="150">
+    <div class="wrapper" @click={closable && (open=false)}>
+        <div class="modal" @click={$event.stopPropagation()} *aFly.action>
+            {#if closable}
+                <div class="close"><Button clear icon={close} @click={open=false}/></div>
+            {/if}
+            <Card 
+                {header} 
+                class="card $main" 
+                class:header="$header" 
+                class:footer="$footer"
+            >
+                {#slot:header}<slot:header/>{/slot}
+                <slot/>
+                {#slot:footer}<slot:footer/>{/slot}
+            </Card>
+        </div>
+    </div>
+</Delayed>
+
+<style>
+    .wrapper{
+        display:flex;
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        justify-content: center;
+        align-items: center;
+        z-index:2;
+    }
+    .modal{
+        max-width: 60%
+    }
+    @media(max-width:599px){
+        .modal{
+            max-width: 96%
+        }
+    }
+    .card{
+        padding: 1.5rem 4rem 1.5rem 4rem;
+    }
+    .close{
+        position: absolute;
+        right: 0px;
+    }
+</style>

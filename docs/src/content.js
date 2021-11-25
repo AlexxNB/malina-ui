@@ -21,6 +21,7 @@ import Card from '@pages/Card.md';
 import Tabs from '@pages/Tabs.md';
 import Tablist from '@pages/Tablist.md';
 import Tab from '@pages/Tab.md';
+import Modal from '@pages/Modal.md';
 
 export default {
 
@@ -147,6 +148,11 @@ export default {
     other: {
         title: 'Other',
         sub:{
+            modal:{
+                title: 'Modal',
+                component: Modal,
+                api: api.modal
+            },
             icon:{
                 title: 'Icon',
                 component: Icon,

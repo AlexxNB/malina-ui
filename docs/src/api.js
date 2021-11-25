@@ -321,4 +321,27 @@ export default {
         ],
     },
 
+    //Modal.xht
+    modal:{
+        props: [
+            ['open',"Show or hide modal",'boolean',false],
+            ['header',"Modal header(if slot:header not present)",'string',false],
+            ['closable',"Allows close modal by click outside or close button",'boolean',true],
+        ],
+
+        anchors:[
+            ['^','<div> element of modal'],
+            ['^header','<div> element of header'],
+            ['^footer','<div> element of footer'],
+            ['^overlay','<div> element of overlay'],
+        ],
+
+        slots:[
+            ['default','Modal content'],
+            ['header','Modal header'],
+            ['footer','Modal footer'],
+        ],
+
+    },
+
 }

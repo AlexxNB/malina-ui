@@ -21,6 +21,7 @@ export {default as Sidebar} from './Layout/Sidebar.xht';
 export {default as Card} from './Layout/Card.xht';
 
 // Other
+export {default as Modal} from './Other/Modal.xht';
 export {default as Icon} from './Other/Icon.xht';
 
 // Utils
