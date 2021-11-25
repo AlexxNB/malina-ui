@@ -1,15 +1,20 @@
 <script>
     import Delayed from './Delayed.xht';
+    import {createAnimation} from '../../lib/animation';
 
     export let open = false;
+    export let opacity = .8;
+
+    const aFade = createAnimation([
+        {opacity:0},
+        {opacity:opacity},
+    ]);
+
+    $: open, ()=>aFade.reverse();
 </script>
 
 <Delayed show={open}>
-    <div 
-        class="animated $main"
-        class:fadeIn={open}
-        class:fadeOut={!open}
-     @@ ^></div>
+    <div class="$main" *aFade.action @@ ^></div>
 </Delayed>
 
 <style>
@@ -21,6 +26,5 @@
         right:0;
         bottom:0;
         background-color: var(--color-bg);
-        opacity: .8;
     }
 </style>

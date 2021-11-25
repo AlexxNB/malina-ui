@@ -1,10 +1,14 @@
 <script>
     import Overlay from './../Utils/Overlay.xht';
     import Delayed from './../Utils/Delayed.xht';
+    import {createAnimation} from '../../lib/animation';
 
     export let open = false;
     export let size = 30;
     export let autoclose = true;
+
+    //Size
+    $: cssSize = Number(size) ? `${size}rem` : size;
     
     //Side
     export let top = false;
@@ -12,18 +16,32 @@
     export let bottom = false;
     $: left = !right && !top && !bottom;
 
+    let aSlide;
+    function action(el){
+        let side = ['marginLeft','width'];
+        if(right) side = ['marginRight','width'];
+        if(top) side = ['marginTop','height'];
+        if(bottom) side = ['marginBottom','height']; 
+        
+        aSlide = createAnimation([
+            {[side[1]]:cssSize, [side[0]]:`-${cssSize}`},
+            {[side[1]]:cssSize, [side[0]]:0}
+        ]);
+        return aSlide.action(el);
+    }
+
+    $: open, ()=>aSlide && aSlide.reverse()
 </script>
 <Overlay {open} @click={autoclose && (open=false)} class="$overlay"/>
 <Delayed show={open}>
-    <div class="sidebar animated $main"
-        style="--size:{Number(size) ? `${size}rem` : size}"
+    <div class="sidebar $main"
+        *action
         class:left
         class:right
         class:top
         class:bottom
         class:vertical={right || left}
         class:horizont={top || bottom}
-        class:slideOut={!open}
         @click={autoclose && (open=false)}
         {...$attributes}
         @@
@@ -34,36 +52,24 @@
 <style>
     div{
         position: fixed;
-        z-index:2;
+        z-index: 2;
         background-color: var(--color-soft);
-        overflow:auto;
+        overflow: auto;
         animation-name: slideIn;
     }
 
     .vertical{
         top: 0;
         bottom:0;
-        width: var(--size);
     }
 
     .horizont{
         left: 0;
         right:0;
-        height: var(--size);
     }
 
-    .left{ left:0; margin-left: calc(-1*var(--size)) }
-    .right{ right:0; margin-right: calc(-1*var(--size)) }
-    .top{ top:0; margin-top: calc(-1*var(--size)) }
-    .bottom{ bottom:0; margin-bottom: calc(-1*var(--size)) }
-
-    @keyframes slideIn {
-        to { margin: 0 }
-    }
-
-    @keyframes slideOut {
-        from { margin: 0 }
-    }
-    
-    .slideOut{animation-name: slideOut;}
+    .left{ left:0}
+    .right{ right:0}
+    .top{top:0}
+    .bottom{ bottom:0}
 </style>
