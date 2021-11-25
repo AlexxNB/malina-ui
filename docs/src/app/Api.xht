@@ -13,70 +13,73 @@
 
 {#if api.props}
     <h3>Properties</h3>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Property</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Default value</th>
-            </tr>
-        </thead>
-        <tbody>
-            {#each api.props as prop}
-            <tr>
-                <td class="prop">{prop[0]} <span>{isRequired(prop)}</span></td>
-                <td>{prop[1]}</td>
-                <td>{@html prop[2].replace(/\|/g,'<br/>')}</td>
-                <td>{defaultValue(prop)}</td>
-            </tr>
-            {/each}
-        </tbody>
-    </table>
+    <div class="responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {#each api.props as prop}
+                <tr>
+                    <td class="prop">{prop[0]} <span>{isRequired(prop)}</span></td>
+                    <td>{prop[1]}</td>
+                    <td>{@html prop[2].replace(/\|/g,'<br/>')}</td>
+                    <td>{defaultValue(prop)}</td>
+                </tr>
+                {/each}
+            </tbody>
+        </table>
+    </div>
     <p class="note">* requred properties</p>
 {/if}
 
 {#if api.anchors}
     <h3>Anchors</h3>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Namespace</th>
-                <th>Area</th>
-            </tr>
-        </thead>
-        <tbody>
-            {#each api.anchors as anchor}
-            <tr>
-                <td class="prop">{anchor[0]}</td>
-                <td>{anchor[1]}</td>
-            </tr>
-            {/each}
-        </tbody>
-    </table>
+    <div class="responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Namespace</th>
+                    <th>Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                {#each api.anchors as anchor}
+                <tr>
+                    <td class="prop">{anchor[0]}</td>
+                    <td>{anchor[1]}</td>
+                </tr>
+                {/each}
+            </tbody>
+        </table>
+    </div>
 {/if}
 
 {#if api.slots}
     <h3>Slots</h3>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Namespace</th>
-                <th>Usage</th>
-            </tr>
-        </thead>
-        <tbody>
-            {#each api.slots as slot}
-            <tr>
-                <td class="prop">{slot[0]}</td>
-                <td>{slot[1]}</td>
-            </tr>
-            {/each}
-        </tbody>
-    </table>
+    <div class="responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Namespace</th>
+                    <th>Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                {#each api.slots as slot}
+                <tr>
+                    <td class="prop">{slot[0]}</td>
+                    <td>{slot[1]}</td>
+                </tr>
+                {/each}
+            </tbody>
+        </table>
+    </div>
 {/if}
 
 <style>
@@ -91,5 +94,8 @@
     .note{
         font-style: italic;
         font-size: .8em;
+    }
+    .responsive{
+        overflow-x: auto;
     }
 </style>
