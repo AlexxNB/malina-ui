@@ -3,6 +3,7 @@
         /* Light mode */
         --color-text: var(--color-hard);
         --color-bg: #FFFFFF;
+        --color-overlay: rgba(45,45,45,.85);
 
         --color-primary: #5EB5F7;
         --color-secondary: #F7A05E;
@@ -23,6 +24,7 @@
         --dm-color-text: var(--dm-color-hard);
         --dm-color-primary: #5EB5F7;
         --dm-color-secondary: #F7A05E;
+        --dm-color-overlay: rgba(45,45,45,.85);
 
         --dm-color-neutral: #8D8D8D;
         --dm-color-hard: #EDEDED;
@@ -51,6 +53,7 @@
     :root[data-theme="dark"]{
         --color-text: var(--dm-color-text);
         --color-bg: var(--dm-color-bg);
+        --color-overlay: var(--dm-color-overlay);
         --color-primary: var(--dm-color-primary);
         --color-secondary: var(--dm-color-secondary);
         --color-neutral: var(--dm-color-neutral);
@@ -66,6 +69,7 @@
         :root:not([data-theme="light"]){
         --color-text: var(--dm-color-text);
         --color-bg: var(--dm-color-bg);
+        --color-overlay: var(--dm-color-overlay);
         --color-primary: var(--dm-color-primary);
         --color-secondary: var(--dm-color-secondary);
         --color-neutral: var(--dm-color-neutral);

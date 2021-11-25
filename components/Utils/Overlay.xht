@@ -3,11 +3,10 @@
     import {createAnimation} from '../../lib/animation';
 
     export let open = false;
-    export let opacity = .8;
 
     const aFade = createAnimation([
         {opacity:0},
-        {opacity:opacity},
+        {opacity:1},
     ]);
 
     $: open, ()=>aFade.reverse();
@@ -25,6 +24,6 @@
         left:0;
         right:0;
         bottom:0;
-        background-color: var(--color-bg);
+        background-color: var(--color-overlay);
     }
 </style>
