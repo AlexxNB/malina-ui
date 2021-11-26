@@ -83,3 +83,25 @@ You can close sidebar when do click on overlay or sidebar itself. To prevent thi
 
 <Button @click={open=true}>Open sidebar</Button>
 ```
+
+### Focus trap
+
+When sidebar is opened, focus will be set on first focusable element inside the sidebar. Also you will be able to jump between elements with `Tab` key inside the sidebar only.
+
+```htm example
+<script>
+    import {Sidebar,Button} from 'malina-ui';
+    let open = false;
+</script>
+
+<Sidebar {open}>
+    <ul>
+        <li><a href="#sidebar">Apple</a></li>
+        <li><a href="#sidebar">Orange</a></li>
+        <li><a href="#sidebar">Grapes</a></li>
+    </ul>
+    * Use Tab key to jump between links
+</Sidebar>
+
+<Button @click={open=true}>Open sidebar</Button>
+```

@@ -91,3 +91,29 @@ By default, modal can be closed by clicking on `close` button or on surrounded o
 
 <Button @click={open=true}>Show modal</Button>
 ```
+
+
+#### Focus trap
+
+The `focus trap` mean that when modal window is active - first focusable element inside the window will be focused and `Tab` key will jump between elments which are inside the modal.
+
+```htm example
+<script>
+    import {Modal,Button,Input} from 'malina-ui';
+    let open = false;
+</script>
+
+<Modal :open header="Modal header">
+    <Input placeholder="Your name"/>
+    <Input placeholder="Your lastname"/>
+    * Jump between elements with Tab key.
+    {#slot:footer}
+        <div class="text-center">
+            <Button clear @click={open=false}>Cancel</Button>
+            <Button primary @click={open=false}>Send</Button>
+        </div>
+    {/slot}
+</Modal>
+
+<Button @click={open=true}>Show modal</Button>
+```
