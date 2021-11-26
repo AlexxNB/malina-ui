@@ -2,7 +2,7 @@
     import Overlay from './../Utils/Overlay.xht';
     import Delayed from './../Utils/Delayed.xht';
     import {createAnimation} from '../../lib/animation';
-    import {focusTrap} from '../../lib/utils';
+    import {focusTrap,onEscape} from '../../lib/utils';
 
     export let open = false;
     export let size = 30;
@@ -40,6 +40,7 @@
     <div class="sidebar $main"
         *action
         *focusTrap
+        *onEscape={closeSidebar}
         class:left
         class:right
         class:top

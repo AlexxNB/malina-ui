@@ -5,7 +5,7 @@
     import Button from './../Form/Button.xht';
     import {close} from './../../icons';
     import {createAnimation} from '../../lib/animation';
-    import {focusTrap} from '../../lib/utils';
+    import {focusTrap,onEscape} from '../../lib/utils';
 
     export let header = false;
     export let closable = true;
@@ -23,7 +23,7 @@
 
 <Overlay {open} class="$overlay"/>
 <Delayed show={open} delayOut="150">
-    <div class="wrapper" @click={closeModal} @keydown|esc={closeModal}>
+    <div class="wrapper" @click={closeModal} *onEscape={closeModal}>
         <div class="modal" @click={$event.stopPropagation()} *aFly.action *focusTrap>
             {#if closable}
                 <div class="close"><Button clear icon={close} @click={open=false} aria-label="Close"/></div>
