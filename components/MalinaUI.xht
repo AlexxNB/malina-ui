@@ -1,5 +1,16 @@
 <script>
     import Styles from './Styles/Styles.xht';
+    import {theme as themeStore} from './../lib/theme';
+    
+    export let theme = null;
+
+    function applyConfig(cfg){
+        themeStore.set(cfg.theme);
+    }
+
+    $: theme, applyConfig({
+        theme
+    });
 </script>
 
 <!-- CSS -->

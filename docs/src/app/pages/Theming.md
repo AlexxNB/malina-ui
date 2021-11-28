@@ -75,3 +75,13 @@ By default will be choosen theme same as system theme in user's browser. But you
 <Button secondary @click={theme.dark()}>Dark</Button>
 <Button hard @click={theme.auto()}>Auto</Button>
 ```
+
+Also you can set theme for all users in `<MalinaUI/>` property called `theme`. Its value may be `light`, `dark` and `auto`. When property is not set, will be used defult browser's theme and choosing another theme with `theme` store(see previous section) will be saved for each user. But when you set theme with this property, previously saved user's choice will be ignored.
+
+```htm
+<script>
+    import {MalinaUI} from 'malina-ui';
+</script>
+
+<MalinaUI theme="dark"/>
+```
