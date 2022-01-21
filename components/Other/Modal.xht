@@ -10,6 +10,7 @@
     export let header = false;
     export let closable = true;
     export let open = false;
+    export let full = false;
 
     const aFly = createAnimation([
         {opacity:0,transform: 'translateY(3rem)'},
@@ -17,14 +18,24 @@
     ],{duration:150});
 
     const closeModal = ()=>closable && (open=false);
+
+    const hideBodyScroll = ()=>{
+        const savedValue = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return {
+            destroy:()=>{
+                document.body.style.overflow = savedValue;
+            }
+        }
+    }
     
     $: open,()=>aFly.reverse();
 </script>
 
 <Overlay {open} class="$overlay"/>
 <Delayed show={open} delayOut="150">
-    <div class="wrapper" @click={closeModal} *onEscape={closeModal}>
-        <div class="modal" @click={$event.stopPropagation()} *aFly.action *focusTrap>
+    <div class="wrapper" @click={closeModal} *onEscape={closeModal} *hideBodyScroll>
+        <div class="modal" class:full @click={$event.stopPropagation()} *aFly.action *focusTrap>
             {#if closable}
                 <div class="close"><Button clear icon={close} @click={open=false} aria-label="Close"/></div>
             {/if}
@@ -55,15 +66,24 @@
         z-index:2;
     }
     .modal{
-        max-width: 60%
+        width: 60%;
+        max-height: 96vh;
     }
     @media(max-width:599px){
         .modal{
-            max-width: 96%
+            max-width: 96%;
         }
     }
+
+    .modal.full{
+        width: 98%;
+        height: 96vh;
+    }
+
     .card{
         padding: 1.5rem 4rem 1.5rem 4rem;
+        overflow: auto;
+        max-height: 96vh;
     }
     .close{
         position: absolute;

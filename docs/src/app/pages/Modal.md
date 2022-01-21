@@ -92,6 +92,30 @@ By default, modal can be closed by clicking on `close` button or on surrounded o
 <Button @click={open=true}>Show modal</Button>
 ```
 
+### Fullpage modal
+
+To show modal, which takes whole screen, use the `full` property. 
+
+```htm example
+<script>
+    import {Modal,Button} from 'malina-ui';
+    let open = false;
+</script>
+
+<Modal full :open header="Full page modal">
+    {#each 20 as i}
+        <h5>Section #{i}</h5>
+        <p>
+            Lorem ipsum dolor sit amet, 
+            consectetur adipisicing elit. 
+            Doloremque cumque velit id.
+        </p>
+    {/each}
+</Modal>
+
+<Button @click={open=true}>Show modal</Button>
+```
+
 
 #### Focus trap
 
