@@ -47,6 +47,8 @@ async function esbuild(options={}){
             malinaPlugin({
                 css: false,
                 compact: false,
+                hideLabel: !DEV,
+                debugLabel: DEV,
                 plugins: [malinaMarkdown()]
             })
         ],
