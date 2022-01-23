@@ -18,23 +18,13 @@
     ],{duration:150});
 
     const closeModal = ()=>closable && (open=false);
-
-    const hideBodyScroll = ()=>{
-        const savedValue = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-        return {
-            destroy:()=>{
-                document.body.style.overflow = savedValue;
-            }
-        }
-    }
     
     $: open,()=>aFly.reverse();
 </script>
 
 <Overlay {open} class="$overlay"/>
 <Delayed show={open} delayOut="150">
-    <div class="wrapper" @click={closeModal} *onEscape={closeModal} *hideBodyScroll>
+    <div class="wrapper" @click={closeModal} *onEscape={closeModal}>
         <div class="modal" class:full @click={$event.stopPropagation()} *aFly.action *focusTrap>
             {#if closable}
                 <div class="close"><Button clear icon={close} @click={open=false} aria-label="Close"/></div>
@@ -83,6 +73,7 @@
     .card{
         padding: 1.5rem 4rem 1.5rem 4rem;
         overflow: auto;
+        overscroll-behavior: contain;
         max-height: 96vh;
     }
     .close{
