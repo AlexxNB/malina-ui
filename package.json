@@ -32,12 +32,12 @@
   },
   "homepage": "https://github.com/AlexxNB/malina-ui#readme",
   "devDependencies": {
-    "derver": "^0.5.2",
-    "esbuild": "^0.13.9",
-    "malinajs": "^0.6.52",
-    "malinajs-router": "^0.1.5",
-    "marked": "^4.0.10",
-    "prismjs": "^1.25.0"
+    "derver": "^0.5.3",
+    "esbuild": "^0.14.36",
+    "malinajs": "^0.6.55",
+    "malinajs-router": "^0.1.7",
+    "marked": "^4.0.14",
+    "prismjs": "^1.27.0"
   },
   "dependencies": {
     "storxy": "^0.1.7"
