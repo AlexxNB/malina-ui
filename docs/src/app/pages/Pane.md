@@ -166,14 +166,15 @@ Add the `resizable` property and you will be able to change size of the `Pane` b
 ```htm example
 <script>
     import {Pane} from 'malina-ui';
+    let size = 30;
 </script>
 
 <div>
 <Pane col>
-    <Pane class="h" resizable>Top</Pane>
+    <Pane class="h" resizable bind>Top</Pane>
     <Pane row>
-        <Pane class="o" resizable>Left</Pane>
-        <Pane class="e">Right</Pane>
+        <Pane class="o" resizable :size>Left size {size}rem</Pane>
+        <Pane class="e">Right size auto</Pane>
     </Pane>
 </Pane>
 </div>
@@ -188,10 +189,15 @@ Add the `resizable` property and you will be able to change size of the `Pane` b
     .h{background-color: #5E69F7;}
 </style>
 ```code
+<script>
+    import {Pane} from 'malina-ui';
+    let size = 30;
+</script>
+
 <Pane col>
     <Pane resizable>Top</Pane>
     <Pane row>
-        <Pane resizable>Left</Pane>
+        <Pane resizable :size>Left size {size}rem</Pane>
         <Pane>Right</Pane>
     </Pane>
 </Pane>

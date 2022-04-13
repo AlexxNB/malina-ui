@@ -36,8 +36,10 @@
     let startPos;
     let startSize;
 
+    let base = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
     function setSize(value){
-      size = `${value}px`;
+      size = value/base;
     }
 
     function start(e){
