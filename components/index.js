@@ -14,6 +14,7 @@ export {default as Radio} from './Form/Radio.xht';
 export {default as Container} from './Layout/Container.xht';
 export {default as Col} from './Layout/Grid/Col.xht';
 export {default as Row} from './Layout/Grid/Row.xht';
+export {default as Pane} from './Layout/Pane.xht';
 export {default as Tablist} from './Layout/Tabs/Tablist.xht';
 export {default as Tab} from './Layout/Tabs/Tab.xht';
 export {default as Navbar} from './Layout/Navbar.xht';

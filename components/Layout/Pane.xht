@@ -1,0 +1,126 @@
+<script>
+  import {store} from 'storxy';
+  import {cssUnit,choose,pointerCoords} from '../../lib/utils.js';
+
+  export let col = false;
+  export let row = false;
+  export let size;
+  export let resizable = false;
+
+  let pane;
+  let width;
+  let height;
+
+  const stackType = $context.stackType;
+  $context.stackType = store(getStackType());
+
+  $onMount(()=>{
+    return stackType && stackType.$$( type => {
+      width = type=='row';
+      height = type=='col';
+    });
+  });
+
+  $: stack = col || row;
+  $: col, row, ()=>$context.stackType.$ = getStackType();
+
+  function getStackType(){
+    return choose(['col','row'],[col,row],null);
+  }
+
+  function resizeAction(e){
+
+    let sizeProp = width ? 'clientWidth' : 'clientHeight';
+    let pointerProp = width ? 'x' : 'y';
+
+    let startPos;
+    let startSize;
+
+    function setSize(value){
+      size = `${value}px`;
+    }
+
+    function start(e){
+      e.preventDefault();
+      startPos = pointerCoords(e)[pointerProp];
+      startSize = pane[sizeProp];
+
+      window.addEventListener('mousemove',drag);
+      window.addEventListener('touchmove',drag);
+      window.addEventListener('mouseup',stop);
+      window.addEventListener('touchend',stop);
+    }
+
+    function stop(){
+      window.removeEventListener('mousemove',drag);
+      window.removeEventListener('touchmove',drag);
+      window.removeEventListener('mouseup',stop);
+      window.removeEventListener('touchend',stop);
+    }
+
+    function drag(e){
+      setSize(startSize+pointerCoords(e)[pointerProp]-startPos);
+    }
+
+    e.addEventListener('mousedown',start);
+    e.addEventListener('touchstart',start);
+
+    return ()=>{
+      e.removeEventListener('mousedown',start);
+      e.removeEventListener('touchstart',start);
+    }
+  }
+</script>
+
+<div 
+  #pane
+  class:stretch={!size} 
+  class:col 
+  class:stack
+  class="$main" 
+  style:width={width && size && cssUnit(size)}
+  style:height={height && size && cssUnit(size)}
+  ^
+><slot/></div>
+{#if (width || height) && resizable}
+  <div 
+    class="handle"
+    class:ver={width}
+    class:hor={height}
+    *resizeAction
+  ></div>
+{/if}
+
+<style>
+  .stretch{
+    flex: 1;
+  }
+
+  .stack{
+    display: flex;
+    overflow: hidden;
+  }
+
+  .col{
+    flex-direction: column;
+  }
+
+  .handle{
+    user-select: none;
+    z-index: 10;
+  }
+
+  .ver{
+    width: 1.6rem;
+    margin-left: -.8rem;
+    margin-right: -.8rem;
+    cursor: col-resize;
+  }
+
+  .hor{
+    height: 1.6rem;
+    margin-top: -.8rem;
+    margin-bottom: -.8rem;
+    cursor: row-resize;
+  }
+</style>

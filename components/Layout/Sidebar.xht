@@ -2,14 +2,14 @@
     import Overlay from './../Utils/Overlay.xht';
     import Delayed from './../Utils/Delayed.xht';
     import {createAnimation} from '../../lib/animation';
-    import {focusTrap,onEscape} from '../../lib/utils';
+    import {focusTrap,onEscape,cssUnit} from '../../lib/utils';
 
     export let open = false;
     export let size = 30;
     export let closable = true;
 
     //Size
-    $: cssSize = Number(size) ? `${size}rem` : size;
+    $: cssSize = cssUnit(size);
     
     //Side
     export let top = false;

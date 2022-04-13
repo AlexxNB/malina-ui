@@ -15,6 +15,7 @@ import Container from '@pages/Container.md';
 import Grid from '@pages/Grid.md';
 import Row from '@pages/Row.md';
 import Col from '@pages/Col.md';
+import Pane from '@pages/Pane.md';
 import Navbar from '@pages/Navbar.md';
 import Sidebar from '@pages/Sidebar.md';
 import Card from '@pages/Card.md';
@@ -64,6 +65,10 @@ export default {
                         api: api.col
                     }
                 }
+            },
+            panes:{
+                title: 'Panes',
+                component: Pane
             },
             navbar:{
                 title: 'Navigation bar',
