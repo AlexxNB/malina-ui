@@ -26,5 +26,5 @@ export {default as Modal} from './Other/Modal.xht';
 export {default as Icon} from './Other/Icon.xht';
 
 // Utils
-export {theme} from './../lib/theme.js';
+export {theme,currentTheme} from './../lib/theme.js';
 export {screen} from './../lib/screen.js';

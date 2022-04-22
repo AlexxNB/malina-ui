@@ -66,15 +66,19 @@ By default will be choosen theme same as system theme in user's browser. But you
 
 ```htm example
 <script>
-    import {Button,theme} from 'malina-ui';
+    import {Button,theme,currentTheme} from 'malina-ui';
 </script>
 
 <p>Current theme: {theme.$}</p>
+<p>Exact current theme: {currentTheme.$}</p>
 
 <Button primary @click={theme.light()}>Light</Button>
 <Button secondary @click={theme.dark()}>Dark</Button>
 <Button hard @click={theme.auto()}>Auto</Button>
+<Button success @click={theme.toggle()}>Toggle</Button>
 ```
+
+The `currentTheme` may have a values `dark` and `light`, which means currently used theme.
 
 Also you can set theme for all users in `<MalinaUI/>` property called `theme`. Its value may be `light`, `dark` and `auto`. When property is not set, will be used defult browser's theme and choosing another theme with `theme` store(see previous section) will be saved for each user. But when you set theme with this property, previously saved user's choice will be ignored.
 
